@@ -11,23 +11,9 @@ class Constants {
    }
 
    static final List<Name> USED = [
-         NYJ,
-         WAS,
-         NO, ATL,
-         HOU, PIT,
-         DAL, PHI,
-         TEN, DEN,
-         BUF, CHI,
-         CLE, TB,
-         SEA, CIN,
-         ARI, GB,
-         SD, MIA,
- //        IND, SF,
-//         NYG, STL,
-//         DET, MIN,
-//         BAL, CAR,
-//         JAX, OAK,
-//         KC, NE
+         TB,
+         NO,
+         NE, SEA,
    ]
 
    static final Map<Name, Team> TEAMS = Name.inject([:]) { teams, team ->
@@ -35,9 +21,30 @@ class Constants {
       teams
    }
 
-
    static final Map<Integer, Week> WEEKS = [:]
 
    static final int LAST_WEEK = 17
+
+   /* 2014...
+static final List<Name> USED = [
+      NYJ,
+      WAS,
+      NO, ATL,
+      HOU, PIT,
+      DAL, PHI,
+      TEN, DEN,
+      BUF, CHI,
+      CLE, TB,
+      SEA, CIN,
+      ARI, GB,
+      SD, MIA,
+      IND, SF,
+      NYG, STL,
+      DET, MIN,
+      BAL, CAR,
+      JAX, OAK,
+      KC, NE
+]
+*/
 
 }
