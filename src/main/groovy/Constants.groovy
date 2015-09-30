@@ -11,8 +11,23 @@ class Constants {
    }
 
    static final List<Name> USED = [
-         NO,
-         TB,
+         NYJ,
+         WAS,
+         NO, ATL,
+         HOU, PIT,
+         DAL, PHI,
+         TEN, DEN,
+         BUF, CHI,
+         CLE, TB,
+         SEA, CIN,
+         ARI, GB,
+         SD, MIA,
+ //        IND, SF,
+//         NYG, STL,
+//         DET, MIN,
+//         BAL, CAR,
+//         JAX, OAK,
+//         KC, NE
    ]
 
    static final Map<Name, Team> TEAMS = Name.inject([:]) { teams, team ->

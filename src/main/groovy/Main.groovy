@@ -20,7 +20,7 @@ class Main {
 
       File file = new File('/Users/rmatthes/nfl/survivor.html')
 
-      download(file)
+      //download(file)
 
       String html = file.text
 
@@ -47,6 +47,10 @@ class Main {
 
       int remainingCount = remaining.size()
       def permutationCount = (1..remainingCount).inject(1) { sum, value -> sum * (value as BigDecimal) }
+
+      def permutationGenerator = new PermutationGenerator(remaining)
+      assert permutationGenerator.total == permutationCount as BigInteger
+
       String prettyCount = prettyPrint(permutationCount)
 
       println "Working with ${remainingCount} remaining teams.  ${prettyCount} permutations."
@@ -58,7 +62,7 @@ class Main {
       long loopLimit = 6L
 
       long loopIndex = 0
-      new PermutationGenerator(remaining).find {
+      permutationGenerator.find {
          loopIndex++
 
          BigDecimal total = (currentWeek..LAST_WEEK).inject(0) { sum, int week ->
