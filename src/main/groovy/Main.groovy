@@ -56,7 +56,7 @@ class Main {
       println "Working with ${remainingCount} remaining teams.  ${prettyCount} permutations."
 
       BigDecimal spike = BigDecimal.valueOf(1000L)
-      def best = new Pick(iteration: 0, teams: [], total: spike)
+      def best = new Pick(iteration: 0, teams: [], total: Long.MAX_VALUE)
 
       //long loopLimit = 100000000L
       long loopLimit = 6L
