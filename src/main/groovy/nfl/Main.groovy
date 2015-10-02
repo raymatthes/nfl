@@ -20,7 +20,7 @@ class Main {
       def tagsoupParser = new Parser()
       def slurper = new XmlSlurper(tagsoupParser)
 
-      File file = new File('/Users/rmatthes/nfl/survivor.html')
+      File file = new File(SURVIVOR_FILE)
 
       //download(file)
 
@@ -28,11 +28,11 @@ class Main {
 
       def page = slurper.parseText(html)
       String title = page.head.title.text()
-      int currentWeek = (title =~ /NFL Survivor Pool Picks Grid: nfl.Week (\d+) Help/)[0][1].toInteger()
+      int currentWeek = (title =~ /NFL Survivor Pool Picks Grid: Week (\d+) Help/)[0][1].toInteger()
 
       println "This is week number ${currentWeek}"
 
-      (currentWeek..Constants.LAST_WEEK).each { int week -> Week.WEEKS.put(week, new Week(week: week)) }
+      (currentWeek..FINAL_WEEK).each { int week -> Week.WEEKS.put(week, new Week(week: week)) }
 
       def dataTable = page.depthFirst().findAll { it.@class.text() == 'datatable' }
 
@@ -44,8 +44,10 @@ class Main {
 
       parseGames(rows, currentWeek)
 
+      List used = Utils.loadUsed()
+
       List<Name> remaining = Name.values()
-      remaining.removeAll(Constants.USED)
+      remaining.removeAll(used)
 
       int remainingCount = remaining.size()
       def permutationCount = (1..remainingCount).inject(1) { sum, value -> sum * (value as BigDecimal) }
@@ -53,7 +55,7 @@ class Main {
       def permutationGenerator = new PermutationGenerator(remaining)
       assert permutationGenerator.total == permutationCount as BigInteger
 
-      String prettyCount = prettyPrint(permutationCount)
+      String prettyCount = Utils.prettyPrint(permutationCount)
 
       println "Working with ${remainingCount} remaining teams.  ${prettyCount} permutations."
 
@@ -67,7 +69,7 @@ class Main {
       permutationGenerator.find {
          loopIndex++
 
-         BigDecimal total = (currentWeek..Constants.LAST_WEEK).inject(0) { sum, int week ->
+         BigDecimal total = (currentWeek..FINAL_WEEK).inject(0) { sum, int week ->
             int offset = (week - currentWeek) * 2
             Name team1 = it[offset]
             Name team2 = it[offset + 1]
@@ -93,7 +95,7 @@ class Main {
             TimeDuration td = TimeCategory.minus(new Date(), start)
             float percent = ((loopIndex as float) / permutationCount as float) * (100 as float)
             String percentString = sprintf('%.10f', percent)
-            println "${percentString}% Iteration: ${prettyPrint(loopIndex as BigDecimal)}. Elapsed: ${td} Best pick: ${best}"
+            println "${percentString}% Iteration: ${Utils.prettyPrint(loopIndex as BigDecimal)}. Elapsed: ${td} Best pick: ${best}"
          }
 
          //loopIndex >= loopLimit
@@ -107,18 +109,12 @@ class Main {
       println "End: ${new Date()}"
    }
 
-   static String prettyPrint(BigDecimal value) {
-      def string = sprintf('%.0f', value)
-      String regex = /(\d)(?=(\d{3})+$)/
-      string.replaceAll(regex, /$1,/)
-   }
-
    private static parseGames(List rows, int currentWeek) {
       rows.each { row ->
          Name name = ((row[0] =~ /^([A-Z]+)/)[0][1]) as Name
          Team team = Team.TEAMS[name]
 
-         (currentWeek..Constants.LAST_WEEK).each { int week ->
+         (currentWeek..FINAL_WEEK).each { int week ->
             Game game = null
             int offset = week - currentWeek + 1
             def empty = [[null, null, null, null]]
@@ -150,9 +146,4 @@ class Main {
       }
    }
 
-   static def download(File file) {
-      URL url = new URL('http://www.survivorgrid.com/')
-      String html = url.getText()
-      file.write(html)
-   }
 }
