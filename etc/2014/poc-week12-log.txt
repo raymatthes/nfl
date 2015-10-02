@@ -1,0 +1,6 @@
+Start: Tue Sep 29 21:06:37 MDT 2015
+This is week number 12
+Working with 12 remaining teams.  479,001,600 permutations.
+
+Elapsed: 1 minutes, 29.514 seconds
+End: Tue Sep 29 21:08:07 MDT 2015

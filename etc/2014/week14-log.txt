@@ -1,0 +1,18 @@
+:compileJava UP-TO-DATE
+:compileGroovy UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:run
+Start: Tue Sep 29 20:04:36 MDT 2015
+This is week number 14
+Working with 8 remaining teams.  40,320 permutations.
+
+Best pick: Pick(iteration:13139, teams:[DET, MIN, CAR, KC, JAX, OAK, BAL, NE], total:-44.5)
+Elapsed: 0.971 seconds
+End: Tue Sep 29 20:04:37 MDT 2015
+
+BUILD SUCCESSFUL
+
+Total time: 4.712 secs
+
+This build could be faster, please consider using the Gradle Daemon: http://gradle.org/docs/2.4/userguide/gradle_daemon.html

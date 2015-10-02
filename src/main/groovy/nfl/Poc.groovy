@@ -1,15 +1,17 @@
+package nfl
+
 import groovy.time.TimeCategory
 import groovy.time.TimeDuration
 import org.ccil.cowan.tagsoup.Parser
 
 import java.math.RoundingMode
 
-import static Constants.*
+import static nfl.Constants.*
 
 /**
  * @author Ray Matthes
  */
-class Main {
+class Poc {
 
    public static void main(String[] args) {
       Date start = new Date()
@@ -26,11 +28,11 @@ class Main {
 
       def page = slurper.parseText(html)
       String title = page.head.title.text()
-      int currentWeek = (title =~ /NFL Survivor Pool Picks Grid: Week (\d+) Help/)[0][1].toInteger()
+      int currentWeek = (title =~ /NFL Survivor Pool Picks Grid: nfl.Week (\d+) Help/)[0][1].toInteger()
 
       println "This is week number ${currentWeek}"
 
-      (currentWeek..LAST_WEEK).each { int week -> WEEKS.put(week, new Week(week: week)) }
+      (currentWeek..Constants.LAST_WEEK).each { int week -> Week.WEEKS.put(week, new Week(week: week)) }
 
       def dataTable = page.depthFirst().findAll { it.@class.text() == 'datatable' }
 
@@ -43,7 +45,7 @@ class Main {
       parseGames(rows, currentWeek)
 
       List<Name> remaining = Name.values()
-      remaining.removeAll(USED)
+      remaining.removeAll(Constants.USED)
 
       int remainingCount = remaining.size()
       def permutationCount = (1..remainingCount).inject(1) { sum, value -> sum * (value as BigDecimal) }
@@ -56,7 +58,7 @@ class Main {
       println "Working with ${remainingCount} remaining teams.  ${prettyCount} permutations."
 
       BigDecimal spike = BigDecimal.valueOf(1000L)
-      def best = new Pick(iteration: 0, teams: [], total: Long.MAX_VALUE)
+      def best = new Pick(iteration: 0, teams: [], total: spike)
 
       //long loopLimit = 100000000L
       long loopLimit = 6L
@@ -65,42 +67,11 @@ class Main {
       permutationGenerator.find {
          loopIndex++
 
-         BigDecimal total = (currentWeek..LAST_WEEK).inject(0) { sum, int week ->
-            int offset = (week - currentWeek) * 2
-            Name team1 = it[offset]
-            Name team2 = it[offset + 1]
-            BigDecimal spread1 = WEEKS.get(week).spreads.get(team1)
-            BigDecimal spread2 = WEEKS.get(week).spreads.get(team2)
-
-            if (spread1 == null || spread2 == null) {
-               sum += spike
-            } else {
-               sum += spread1 + spread2
-            }
-
-            sum
-         }
-
-         // println(new Pick(iteration: loopIndex, teams: it, total: total))
-
-         if (total < best.total) {
-            best = new Pick(iteration: loopIndex, teams: it, total: total)
-         }
-
-         if (loopIndex % 1000000L == 0) {
-            TimeDuration td = TimeCategory.minus(new Date(), start)
-            float percent = ((loopIndex as float) / permutationCount as float) * (100 as float)
-            String percentString = sprintf('%.10f', percent)
-            println "${percentString}% Iteration: ${prettyPrint(loopIndex as BigDecimal)}. Elapsed: ${td} Best pick: ${best}"
-         }
-
-         //loopIndex >= loopLimit
          false
       }
 
       TimeDuration td = TimeCategory.minus(new Date(), start)
       println ""
-      println "Best pick: ${best}"
       println "Elapsed: ${td}"
       println "End: ${new Date()}"
    }
@@ -114,9 +85,9 @@ class Main {
    private static parseGames(List rows, int currentWeek) {
       rows.each { row ->
          Name name = ((row[0] =~ /^([A-Z]+)/)[0][1]) as Name
-         Team team = TEAMS[name]
+         Team team = Team.TEAMS[name]
 
-         (currentWeek..LAST_WEEK).each { int week ->
+         (currentWeek..Constants.LAST_WEEK).each { int week ->
             Game game = null
             int offset = week - currentWeek + 1
             def empty = [[null, null, null, null]]
@@ -132,7 +103,7 @@ class Main {
                BigDecimal homeSpread = spread
                BigDecimal awaySpread = spread.negate()
                Team home = team
-               Team away = TEAMS[opponent as Name]
+               Team away = Team.TEAMS[opponent as Name]
                if (awayFlag) {
                   home = away
                   homeSpread = awaySpread
@@ -140,8 +111,8 @@ class Main {
                   awaySpread = homeSpread.negate()
                }
                game = new Game(week: week, home: home, away: away, homeSpread: homeSpread, awaySpread: awaySpread)
-               WEEKS[week].games << game
-               WEEKS[week].spreads.put(name, spread)
+               Week.WEEKS[week].games << game
+               Week.WEEKS[week].spreads.put(name, spread)
             }
             team.games.put(week, game)
          }

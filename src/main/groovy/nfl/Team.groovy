@@ -1,12 +1,19 @@
+package nfl
+
 import groovy.transform.ToString
 
-import static Constants.*
+import static nfl.Constants.*
 
 /**
  * @author Ray Matthes
  */
 @ToString(includeNames = true, excludes = 'games')
 class Team implements Comparable {
+
+   static final Map<Name, Team> TEAMS = Name.inject([:]) { teams, team ->
+      teams[team] = new Team('name': team)
+      teams
+   }
 
    Name name
    Map<Integer, Game> games = [:]

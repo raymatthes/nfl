@@ -1,6 +1,8 @@
+package nfl
+
 import groovy.transform.ToString
 
-import static Constants.*
+import static nfl.Constants.*
 
 /**
  * @author Ray Matthes

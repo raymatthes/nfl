@@ -1,3 +1,5 @@
+package nfl
+
 import static Constants.Name.*
 
 /**
@@ -16,12 +18,6 @@ class Constants {
          NE, SEA,
    ]
 
-   static final Map<Name, Team> TEAMS = Name.inject([:]) { teams, team ->
-      teams[team] = new Team('name': team)
-      teams
-   }
-
-   static final Map<Integer, Week> WEEKS = [:]
 
    static final int LAST_WEEK = 17
 

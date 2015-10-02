@@ -1,3 +1,5 @@
+package nfl
+
 import groovy.transform.ToString
 
 /**
