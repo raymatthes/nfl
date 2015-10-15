@@ -22,7 +22,7 @@ class Main {
 
       File file = new File(SURVIVOR_FILE)
 
-      //Utils.download(file)
+      Utils.download(file)
 
       String html = file.text
 
