@@ -76,7 +76,8 @@ class Main {
             BigDecimal spread1 = Week.WEEKS.get(week).spreads.get(team1)
             BigDecimal spread2 = Week.WEEKS.get(week).spreads.get(team2)
 
-            if (spread1 == null || spread2 == null) {
+            if (spread1 == null || spread2 == null || isMatchup(week, team1, team2)) {
+               // prevent choosing this permutation by spiking it
                sum += spike
             } else {
                sum += spread1 + spread2
@@ -107,6 +108,12 @@ class Main {
       println "Best pick: ${best}"
       println "Elapsed: ${td}"
       println "End: ${new Date()}"
+   }
+
+   static boolean isMatchup(int week, Name team1, Name team2) {
+      Game game = Team.TEAMS[team1].games[week]
+      (game.home.name == team1 && game.away.name == team2) ||
+            (game.away.name == team1 && game.home.name == team2)
    }
 
    private static parseGames(List rows, int currentWeek) {

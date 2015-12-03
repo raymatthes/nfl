@@ -1,0 +1,21 @@
+:compileJava UP-TO-DATE
+:compileGroovy UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:run
+Start: Wed Dec 02 23:11:48 MST 2015
+This is week number 13
+Working with 10 remaining teams.  3,628,800 permutations.
+27.5573196411% Iteration: 1,000,000. Elapsed: 3.220 seconds Best pick: nfl.Pick(iteration:940397, teams:[CHI, MIA, CLE, SF, ATL, STL, BUF, TEN, DAL, IND], total:-25.0)
+55.1146392822% Iteration: 2,000,000. Elapsed: 5.521 seconds Best pick: nfl.Pick(iteration:1062101, teams:[CHI, TEN, CLE, SF, ATL, STL, BUF, MIA, DAL, IND], total:-25.5)
+82.6719589233% Iteration: 3,000,000. Elapsed: 7.615 seconds Best pick: nfl.Pick(iteration:1062101, teams:[CHI, TEN, CLE, SF, ATL, STL, BUF, MIA, DAL, IND], total:-25.5)
+
+Best pick: nfl.Pick(iteration:1062101, teams:[CHI, TEN, CLE, SF, ATL, STL, BUF, MIA, DAL, IND], total:-25.5)
+Elapsed: 8.937 seconds
+End: Wed Dec 02 23:11:57 MST 2015
+
+BUILD SUCCESSFUL
+
+Total time: 11.946 secs
+
+This build could be faster, please consider using the Gradle Daemon: http://gradle.org/docs/2.4/userguide/gradle_daemon.html
