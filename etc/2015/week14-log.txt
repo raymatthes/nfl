@@ -1,0 +1,18 @@
+:compileJava UP-TO-DATE
+:compileGroovy
+:processResources UP-TO-DATE
+:classes
+:run
+Start: Thu Dec 10 16:23:26 MST 2015
+This is week number 14
+Working with 8 remaining teams.  40,320 permutations.
+
+Best pick: nfl.Pick(iteration:12339, teams:[CLE, IND, ATL, STL, BUF, MIA, DAL, SF], total:-13.5)
+Elapsed: 2.197 seconds
+End: Thu Dec 10 16:23:28 MST 2015
+
+BUILD SUCCESSFUL
+
+Total time: 6.115 secs
+
+This build could be faster, please consider using the Gradle Daemon: http://gradle.org/docs/2.4/userguide/gradle_daemon.html
