@@ -1,7 +1,7 @@
 apply plugin:'application'
 apply plugin: 'groovy'
 
-mainClassName = "nfl.Main"
+mainClassName = "nfl.HeuristicMethod"
 
 repositories {
    mavenCentral()

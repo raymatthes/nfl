@@ -9,9 +9,14 @@ import java.math.RoundingMode
 import static nfl.Constants.*
 
 /**
+ * a less practical method that examines every pick permutation
+ *
+ * this becomes feasible to run at week 12 with (12) remaining teams.
+ * 479,001,600 permutations -- maybe 20 minutes or so
+ *
  * @author Ray Matthes
  */
-class Main {
+class BruteForceMethod {
 
    public static void main(String[] args) {
       Date start = new Date()
