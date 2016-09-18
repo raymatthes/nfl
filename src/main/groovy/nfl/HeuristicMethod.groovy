@@ -89,10 +89,11 @@ class HeuristicMethod {
 
    static Pick random(List<Name> remaining) {
       long seed = System.nanoTime()
+      Random random = new Random(seed)
       Pick best = new Pick(iteration: 0, teams: [], total: Constants.SPIKE)
       List<Integer> weeks = (Utils.currentWeekNumber()..Constants.FINAL_WEEK).toArray() as List<Integer>
-      (1.100000).each {
-         Collections.shuffle(weeks, new Random(seed));
+      (1.10000).each {
+         Collections.shuffle(weeks, random);
          Pick candidate = computePick(remaining, weeks)
          best = (candidate.total < best.total) ? candidate : best
       }
