@@ -16,6 +16,8 @@ import static nfl.Constants.Name
  */
 class HeuristicMethod {
 
+   static final int RANDOM_ITERATIONS = 10
+
    public static void main(String[] args) {
       Date start = new Date()
       println "Start: ${start}"
@@ -25,11 +27,14 @@ class HeuristicMethod {
 
       List<Name> remaining = loadCurrentState()
 
+      // TBD
 //      forward(remaining).prettyPrint('Forward')
-      forward2(remaining).prettyPrint('Forward2')
 //      reverse(remaining).prettyPrint('Reverse')
-      reverse2(remaining).prettyPrint('Reverse2')
 //      middleOut(remaining).prettyPrint('Middle Out')
+
+
+      forward2(remaining).prettyPrint('Forward2')
+      reverse2(remaining).prettyPrint('Reverse2')
       random(remaining).prettyPrint('Random')
 
       TimeDuration td = TimeCategory.minus(new Date(), start)
@@ -92,8 +97,9 @@ class HeuristicMethod {
       Random random = new Random(seed)
       Pick best = new Pick(iteration: 0, teams: [], total: Constants.SPIKE)
       List<Integer> weeks = (Utils.currentWeekNumber()..Constants.FINAL_WEEK).toArray() as List<Integer>
-      (1.10000).each {
+      (1..RANDOM_ITERATIONS).each {
          Collections.shuffle(weeks, random);
+         println weeks
          Pick candidate = computePick(remaining, weeks)
          best = (candidate.total < best.total) ? candidate : best
       }
@@ -108,15 +114,16 @@ class HeuristicMethod {
       pick.teams[count - 1] = null
 
       List<Name> available = remaining.collect()
+      def a = 1
       weekNumbers.each { Integer weekNumber ->
          Week week = Week.WEEKS[weekNumber]
          Map filtered = week.spreads.findAll { it.key in available }
          Iterator sorted = filtered.sort { x, y -> x.value <=> y.value }.iterator()
 
-         int picksForWeek = Utils.picksForWeek(weekNumber)
-         (1..picksForWeek).each { pickIndex ->
+         int pickCount = Utils.picksForWeek(weekNumber)
+         (1..pickCount).each { pickIndex ->
             def spread = sorted.next()
-            int teamsIndex = computeTeamsIndex(currentWeek, weekNumber, picksForWeek, pickIndex)
+            int teamsIndex = computeTeamsIndex(currentWeek, weekNumber, pickCount, pickIndex)
             pick.teams.set(teamsIndex, spread.key)
             pick.total += spread.value
             available.remove(spread.key)
@@ -125,8 +132,8 @@ class HeuristicMethod {
       pick
    }
 
-   protected static int computeTeamsIndex(int currentWeek, int weekNumber, int picksForWeek, int pickIndex) {
-      ((currentWeek..weekNumber).inject(0) { sum, item -> sum + Utils.picksForWeek(item) }) - picksForWeek + pickIndex - 1
+   protected static int computeTeamsIndex(int currentWeek, int weekNumber, int pickCount, int pickIndex) {
+      ((currentWeek..weekNumber).inject(0) { sum, item -> sum + Utils.picksForWeek(item) }) - pickCount + pickIndex - 1
    }
 
    protected static List<Name> loadCurrentState() {
