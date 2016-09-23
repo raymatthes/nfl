@@ -2,10 +2,12 @@ package nfl
 
 import groovy.transform.ToString
 
+import static nfl.Constants.*
+
 /**
  * @author Ray Matthes
  */
-@ToString(includeNames=true)
+@ToString(includeNames = true)
 class Game implements Comparable {
 
    Integer week
@@ -43,6 +45,12 @@ class Game implements Comparable {
       result = 31 * result + (home?.hashCode() ?: 0)
       result = 31 * result + (away?.hashCode() ?: 0)
       return result;
+   }
+
+   Name getOpponentFor(Name name) {
+      (home.name == name) ?
+            away.name :
+            (away.name == name) ? home.name : null
    }
 
 }

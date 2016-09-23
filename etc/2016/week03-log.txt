@@ -117,3 +117,71 @@ Elapsed: 0.887 seconds
 End: Thu Sep 22 10:15:30 MDT 2016
 
 Process finished with exit code 0
+
+-=-=-=-=-=-==
+
+repaired...
+
+/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/bin/java -Didea.launcher.port=7541 "-Didea.launcher.bin.path=/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath "/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/tools.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Users/rmatthes/src/nfl/build/classes/main:/Users/rmatthes/src/nfl/build/resources/main:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/1.8.6/96a26bfa6e5aea2e3c46df44a19de93a2acd2366/groovy-all-1.8.6.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.ccil.cowan.tagsoup/tagsoup/1.2/639fd364750d7363c85797dc944b4a80f78fa684/tagsoup-1.2.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.15/3b132bea69e8ee099f416044970997bde80f4ea6/snakeyaml-1.15.jar:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar" com.intellij.rt.execution.application.AppMain nfl.HeuristicMethod
+Start: Thu Sep 22 22:48:16 MDT 2016
+This is week number 3
+Working with 30 remaining teams.  265,252,859,812,191,058,636,308,480,000,000 permutations.
+Pick strategy: Forward2
+nfl.Pick(iteration:1, teams:[MIA, SEA, ARI, WAS, NE, CAR, TEN, PIT, CIN, GB, NYJ, DEN, DAL, KC, BAL, TB, NYG, IND, HOU, NO, OAK, CHI, MIN, LA, BUF, ATL, SD, JAX, SF, CLE], total:-169.5)
+03 MIA(-10.0) SEA(-9.5)
+04 ARI(-9.5) WAS(-9.5)
+05 NE(-8.0) CAR(-7.5)
+06 TEN(-7.0) PIT(-6.0)
+07 CIN(-14.0) GB(-10.5)
+08 NYJ(-9.0) DEN(-7.0)
+09 DAL(-8.0) KC(-8.0)
+10 BAL(-10.5) TB(-6.0)
+11 NYG(-7.0) IND(-4.0)
+12 HOU(-5.0) NO(-3.0)
+13 OAK(-4.0) CHI(-3.0)
+14 MIN(-3.5) LA(-1.5)
+15 BUF(-7.5) ATL(-5.0)
+16 SD(-4.5) JAX(-3.0)
+17 SF(7.0) CLE(14.5)
+
+Pick strategy: Reverse2
+nfl.Pick(iteration:1, teams:[NO, CLE, JAX, CHI, OAK, LA, BUF, WAS, MIA, ATL, HOU, TEN, TB, SF, BAL, NYJ, SEA, IND, NYG, DAL, NE, GB, CIN, DEN, ARI, KC, CAR, SD, PIT, MIN], total:-148.0)
+03 NO(-3.0) CLE(10.0)
+04 JAX(-1.0) CHI(0.5)
+05 OAK(-3.5) LA(-3.0)
+06 BUF(-3.5) WAS(-3.0)
+07 MIA(-3.0) ATL(-2.5)
+08 HOU(-4.5) TEN(-2.0)
+09 TB(-3.5) SF(-1.0)
+10 BAL(-10.5) NYJ(-7.0)
+11 SEA(-8.0) IND(-4.0)
+12 NYG(-7.5) DAL(-5.0)
+13 NE(-6.5) GB(-5.5)
+14 CIN(-9.5) DEN(-5.5)
+15 ARI(-10.0) KC(-9.5)
+16 CAR(-9.5) SD(-4.5)
+17 PIT(-14.5) MIN(-8.0)
+
+Pick strategy: Random
+nfl.Pick(iteration:56174, teams:[MIA, DAL, WAS, HOU, NE, IND, TEN, BUF, CIN, GB, NYJ, DEN, SD, SF, ARI, BAL, CAR, PIT, NYG, NO, OAK, CHI, TB, LA, KC, SEA, JAX, CLE, MIN, ATL], total:-196.5)
+03 MIA(-10.0) DAL(-7.5)
+04 WAS(-9.5) HOU(-7.5)
+05 NE(-8.0) IND(-4.0)
+06 TEN(-7.0) BUF(-3.5)
+07 CIN(-14.0) GB(-10.5)
+08 NYJ(-9.0) DEN(-7.0)
+09 SD(-4.0) SF(-1.0)
+10 ARI(-11.0) BAL(-10.5)
+11 CAR(-10.5) PIT(-10.5)
+12 NYG(-7.5) NO(-3.0)
+13 OAK(-4.0) CHI(-3.0)
+14 TB(-5.0) LA(-1.5)
+15 KC(-9.5) SEA(-8.0)
+16 JAX(-3.0) CLE(4.5)
+17 MIN(-8.0) ATL(-3.5)
+
+
+Elapsed: 31.908 seconds
+End: Thu Sep 22 22:48:48 MDT 2016
+
+Process finished with exit code 0

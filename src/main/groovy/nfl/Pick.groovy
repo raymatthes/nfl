@@ -9,9 +9,14 @@ import static nfl.Constants.*
  */
 @ToString(includeNames = true)
 class Pick {
+
    long iteration
    List<Name> teams
    BigDecimal total
+
+   static Pick getSpike() {
+      new Pick(iteration: 0, teams: [], total: Constants.SPIKE)
+   }
 
    def prettyPrint(String title) {
       println "Pick strategy: ${title}"

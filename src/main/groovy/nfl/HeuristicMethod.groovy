@@ -16,7 +16,7 @@ import static nfl.Constants.Name
  */
 class HeuristicMethod {
 
-   static final int RANDOM_ITERATIONS = 10
+   static final long RANDOM_ITERATIONS = 100000L
 
    public static void main(String[] args) {
       Date start = new Date()
@@ -31,7 +31,6 @@ class HeuristicMethod {
 //      forward(remaining).prettyPrint('Forward')
 //      reverse(remaining).prettyPrint('Reverse')
 //      middleOut(remaining).prettyPrint('Middle Out')
-
 
       forward2(remaining).prettyPrint('Forward2')
       reverse2(remaining).prettyPrint('Reverse2')
@@ -84,52 +83,66 @@ class HeuristicMethod {
 
    static Pick forward2(List<Name> remaining) {
       def weekRange = (Utils.currentWeekNumber()..Constants.FINAL_WEEK)
-      computePick(remaining, weekRange.toArray() as List<Integer>)
+      computePick(remaining, weekRange.toArray() as List<Integer>, 1L)
    }
 
    static Pick reverse2(List<Name> remaining) {
       def weekRange = (Constants.FINAL_WEEK..Utils.currentWeekNumber())
-      computePick(remaining, weekRange.toArray() as List<Integer>)
+      computePick(remaining, weekRange.toArray() as List<Integer>, 1L)
    }
 
    static Pick random(List<Name> remaining) {
       long seed = System.nanoTime()
       Random random = new Random(seed)
-      Pick best = new Pick(iteration: 0, teams: [], total: Constants.SPIKE)
+      Pick best = Pick.getSpike()
       List<Integer> weeks = (Utils.currentWeekNumber()..Constants.FINAL_WEEK).toArray() as List<Integer>
       (1..RANDOM_ITERATIONS).each {
          Collections.shuffle(weeks, random);
-         println weeks
-         Pick candidate = computePick(remaining, weeks)
+         Pick candidate = computePick(remaining, weeks, it)
          best = (candidate.total < best.total) ? candidate : best
       }
       best
    }
 
-   static Pick computePick(List<Name> remaining, List<Integer> weekNumbers) {
-      Pick pick = new Pick(iteration: 0, teams: [], total: 0)
+   static Pick computePick(List<Name> remaining, List<Integer> weekNumbers, long iteration) {
+      Pick pick = new Pick(iteration: iteration, teams: [], total: 0)
       int currentWeek = Utils.currentWeekNumber()
-
       int count = weekNumbers.inject(0) { sum, item -> sum + Utils.picksForWeek(item) }
       pick.teams[count - 1] = null
 
       List<Name> available = remaining.collect()
-      def a = 1
+
       weekNumbers.each { Integer weekNumber ->
          Week week = Week.WEEKS[weekNumber]
          Map filtered = week.spreads.findAll { it.key in available }
-         Iterator sorted = filtered.sort { x, y -> x.value <=> y.value }.iterator()
+         Map sortedMap = filtered.sort { x, y -> x.value <=> y.value }
+         Iterator sorted = sortedMap.iterator()
 
+         List<Name> eliminatedThisWeek = []
          int pickCount = Utils.picksForWeek(weekNumber)
          (1..pickCount).each { pickIndex ->
-            def spread = sorted.next()
+            def spread = sorted.find { !(it.key in eliminatedThisWeek) }
+
+            if (!spread) {
+               // available teams have a BYE week so abandon this Pick
+               return Pick.getSpike()
+            }
+
             int teamsIndex = computeTeamsIndex(currentWeek, weekNumber, pickCount, pickIndex)
-            pick.teams.set(teamsIndex, spread.key)
+            Name name = spread.key
+
+            pick.teams.set(teamsIndex, name)
             pick.total += spread.value
-            available.remove(spread.key)
+
+            available.remove(name)
+            eliminatedThisWeek << name
+
+            Name opponent = week.getOpponentFor(name)
+            eliminatedThisWeek << opponent
          }
       }
-      pick
+
+      pick.teams.any { !it } ? Pick.getSpike() : pick
    }
 
    protected static int computeTeamsIndex(int currentWeek, int weekNumber, int pickCount, int pickIndex) {
