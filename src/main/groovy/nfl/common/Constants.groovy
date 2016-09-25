@@ -11,7 +11,12 @@ class Constants {
 
    static enum Name {
       ARI, ATL, BAL, BUF, CAR, CHI, CIN, CLE, DAL, DEN, DET, GB, HOU, IND, JAX, KC,
-      MIA, MIN, NE, NO, NYG, NYJ, OAK, PHI, PIT, SD, SF, SEA, TB, TEN, WAS, LA
+      LA, MIA, MIN, NE, NO, NYG, NYJ, OAK, PHI, PIT, SD, SEA, SF, TB, TEN, WAS
+   }
+
+   static enum Name_2014_2015 {
+      ARI, ATL, BAL, BUF, CAR, CHI, CIN, CLE, DAL, DEN, DET, GB, HOU, IND, JAX, KC,
+      MIA, MIN, NE, NO, NYG, NYJ, OAK, PHI, PIT, SD, SEA, SF, STL, TB, TEN, WAS
    }
 
    static final int FINAL_WEEK = 17

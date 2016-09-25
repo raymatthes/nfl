@@ -82,8 +82,11 @@ class HeuristicMethod {
 
       weekNumbers.each { Integer weekNumber ->
          Week week = Week.WEEKS[weekNumber]
-         Map filtered = week.spreads.findAll { it.key in available }
-         Map sortedMap = filtered.sort { x, y -> x.value <=> y.value }
+         Map<Name, BigDecimal> filtered = week.spreads.findAll { it.key in available }
+         Map<Name, BigDecimal> sortedMap = filtered.sort { x, y ->
+            x.value <=> y.value ?:
+                  x.key <=> y.key
+         }
          Iterator sorted = sortedMap.iterator()
 
          List<Name> eliminatedThisWeek = []

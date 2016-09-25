@@ -41,7 +41,7 @@ class HeuristicMethodSpec extends Specification {
 
       then:
       pick
-      new BigDecimal('-150.0') == pick.total
+      new BigDecimal('-155.5') == pick.total
    }
 
    def "test reverse week 01"() {
@@ -55,7 +55,7 @@ class HeuristicMethodSpec extends Specification {
 
       then:
       pick
-      new BigDecimal('-137.5') == pick.total
+      new BigDecimal('-142.5') == pick.total
    }
 
 }
