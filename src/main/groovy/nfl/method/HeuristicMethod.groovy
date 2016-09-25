@@ -22,7 +22,7 @@ import static Constants.Name
  */
 class HeuristicMethod {
 
-   static final long RANDOM_ITERATIONS = 100000L
+   static final long RANDOM_ITERATIONS = 100L
 
    public static void main(String[] args) {
       Date start = new Date()
@@ -33,13 +33,9 @@ class HeuristicMethod {
 
       List<Name> remaining = loadCurrentState()
 
-      // TBD
-//      forward(remaining).prettyPrint('Forward')
-//      reverse(remaining).prettyPrint('Reverse')
-//      middleOut(remaining).prettyPrint('Middle Out')
-
-      forward2(remaining).prettyPrint('Forward2')
-      reverse2(remaining).prettyPrint('Reverse2')
+      forward(remaining).prettyPrint('Forward2')
+      reverse(remaining).prettyPrint('Reverse2')
+      //middleOut(remaining).prettyPrint('Middle Out')
       random(remaining).prettyPrint('Random')
 
       TimeDuration td = TimeCategory.minus(new Date(), start)
@@ -48,53 +44,19 @@ class HeuristicMethod {
       println "End: ${new Date()}"
    }
 
-   static Pick middleOut(List<Name> remaining) {
-      forward(remaining)
-   }
-
-   static Pick reverse(List<Name> remaining) {
-      Pick pick = new Pick(iteration: 0, teams: [], total: 0)
-      List<Name> available = remaining.collect()
-
-      Week.WEEKS.iterator().reverse().each { weekEntry ->
-         Integer weekNumber = weekEntry.key
-         Week week = weekEntry.value
-         Map filtered = week.spreads.findAll { it.key in available }
-         Iterator sorted = filtered.sort { x, y -> x.value <=> y.value }.iterator()
-         (1..Utils.picksForWeek(weekNumber)).each {
-            def spread = sorted.next()
-            pick.teams.add(0, spread.key)
-            pick.total += spread.value
-            available.remove(spread.key)
-         }
-      }
-      pick
-   }
-
    static Pick forward(List<Name> remaining) {
-      Pick pick = new Pick(iteration: 0, teams: [], total: 0)
-      List<Name> available = remaining.collect()
-      Week.WEEKS.each { Integer weekNumber, Week week ->
-         Map filtered = week.spreads.findAll { it.key in available }
-         Iterator sorted = filtered.sort { x, y -> x.value <=> y.value }.iterator()
-         (1..Utils.picksForWeek(weekNumber)).each {
-            def spread = sorted.next()
-            pick.teams << spread.key
-            pick.total += spread.value
-            available.remove(spread.key)
-         }
-      }
-      pick
-   }
-
-   static Pick forward2(List<Name> remaining) {
       def weekRange = (Utils.currentWeekNumber()..Constants.FINAL_WEEK)
       computePick(remaining, weekRange.toArray() as List<Integer>, 1L)
    }
 
-   static Pick reverse2(List<Name> remaining) {
+   static Pick reverse(List<Name> remaining) {
       def weekRange = (Constants.FINAL_WEEK..Utils.currentWeekNumber())
       computePick(remaining, weekRange.toArray() as List<Integer>, 1L)
+   }
+
+   // TODO not implemented yet
+   static Pick middleOut(List<Name> remaining) {
+      forward(remaining)
    }
 
    static Pick random(List<Name> remaining) {
@@ -168,6 +130,10 @@ class HeuristicMethod {
       if (download) {
          Utils.download(file)
       }
+      parseFile(file)
+   }
+
+   protected static parseFile(File file) {
       String html = file.text
       def tagsoupParser = new Parser()
       def slurper = new XmlSlurper(tagsoupParser)
@@ -175,6 +141,7 @@ class HeuristicMethod {
       String title = page.head.title.text()
       int currentWeek = (title =~ /NFL Survivor Pool Picks Grid: Week (\d+) Help/)[0][1].toInteger()
       println "This is week number ${currentWeek}"
+      Week.WEEKS.clear()
       (currentWeek..Constants.FINAL_WEEK).each { int week -> Week.WEEKS.put(week, new Week(week: week)) }
       def dataTable = page.depthFirst().findAll { it.@class.text() == 'datatable' }
       String[] header = dataTable.thead[0].tr.th[3..-2]*.text()

@@ -13,7 +13,7 @@ dependencies {
    compile 'org.yaml:snakeyaml:1.15'
 
    // Spock
-   testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+   testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
 
    // optional dependencies for using Spock
    testCompile "org.hamcrest:hamcrest-core:1.3"
