@@ -3,6 +3,8 @@ package nfl.common
 import nfl.domain.Week
 import org.yaml.snakeyaml.Yaml
 
+import java.text.DecimalFormat
+
 import static Constants.*
 
 /**
@@ -11,14 +13,12 @@ import static Constants.*
 class Utils {
 
    static String prettyPrint(BigDecimal value) {
-      def string = sprintf('%.0f', value)
-      String regex = /(\d)(?=(\d{3})+$)/
-      string.replaceAll(regex, /$1,/)
+      new DecimalFormat(',###').format(value)
    }
 
    static List loadUsed() {
       String text = this.getResource(USED_TEAMS_FILE).text
-      List list = new Yaml().load(text) as List
+      List<String> list = new Yaml().load(text) as List
       list.collect { Name.valueOf(it) }
    }
 
