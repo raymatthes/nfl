@@ -1,8 +1,8 @@
-package nfl
+package nfl.domain
 
 import groovy.transform.ToString
 
-import static nfl.Constants.*
+import static nfl.common.Constants.*
 
 /**
  * @author Ray Matthes

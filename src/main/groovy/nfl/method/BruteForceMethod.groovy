@@ -1,12 +1,17 @@
-package nfl
+package nfl.method
 
 import groovy.time.TimeCategory
 import groovy.time.TimeDuration
+import nfl.common.Utils
+import nfl.domain.Game
+import nfl.domain.Pick
+import nfl.domain.Team
+import nfl.domain.Week
 import org.ccil.cowan.tagsoup.Parser
 
 import java.math.RoundingMode
 
-import static nfl.Constants.*
+import static nfl.common.Constants.*
 
 /**
  * a less practical method that examines every pick permutation
@@ -27,7 +32,7 @@ class BruteForceMethod {
 
       File file = new File(SURVIVOR_FILE)
 
-      Utils.download(file)
+      //Utils.download(file)
 
       String html = file.text
 
@@ -91,7 +96,7 @@ class BruteForceMethod {
             sum
          }
 
-         // println(new nfl.Pick(iteration: loopIndex, teams: it, total: total))
+         // println(new Pick(iteration: loopIndex, teams: it, total: total))
 
          if (total < best.total) {
             best = new Pick(iteration: loopIndex, teams: it, total: total)

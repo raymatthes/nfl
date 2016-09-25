@@ -1,8 +1,10 @@
-package nfl
+package nfl.domain
 
 import groovy.transform.ToString
+import nfl.common.Constants
+import nfl.common.Utils
 
-import static nfl.Constants.*
+import static nfl.common.Constants.*
 
 /**
  * @author Ray Matthes

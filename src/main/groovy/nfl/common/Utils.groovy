@@ -1,8 +1,9 @@
-package nfl
+package nfl.common
 
+import nfl.domain.Week
 import org.yaml.snakeyaml.Yaml
 
-import static nfl.Constants.*
+import static Constants.*
 
 /**
  * @author Ray Matthes
@@ -16,7 +17,7 @@ class Utils {
    }
 
    static List loadUsed() {
-      String text = new File(USED_TEAMS_FILE).getText('UTF-8')
+      String text = this.getResource(USED_TEAMS_FILE).text
       List list = new Yaml().load(text) as List
       list.collect { Name.valueOf(it) }
    }

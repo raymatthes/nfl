@@ -1,4 +1,4 @@
-package nfl
+package nfl.common
 
 /**
  * @author Ray Matthes
@@ -6,7 +6,7 @@ package nfl
 class Constants {
 
    static String SURVIVOR_FILE = 'etc/survivor.html'
-   static String USED_TEAMS_FILE = 'etc/used-teams.yaml'
+   static String USED_TEAMS_FILE = '/used-teams.yaml'
    static String DOWNLOAD_URL = 'http://www.survivorgrid.com/'
 
    static enum Name {

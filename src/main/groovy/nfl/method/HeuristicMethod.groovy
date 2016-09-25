@@ -1,12 +1,18 @@
-package nfl
+package nfl.method
 
 import groovy.time.TimeCategory
 import groovy.time.TimeDuration
+import nfl.common.Constants
+import nfl.common.Utils
+import nfl.domain.Game
+import nfl.domain.Pick
+import nfl.domain.Team
+import nfl.domain.Week
 import org.ccil.cowan.tagsoup.Parser
 
 import java.math.RoundingMode
 
-import static nfl.Constants.Name
+import static Constants.Name
 
 /**
  * a practical method not guaranteed to be optimal or perfect, but sufficient for the immediate goal
