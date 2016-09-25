@@ -148,7 +148,7 @@ class HeuristicMethod {
       (currentWeek..Constants.FINAL_WEEK).each { int week -> Week.WEEKS.put(week, new Week(week: week)) }
       def dataTable = page.depthFirst().findAll { it.@class.text() == 'datatable' }
       String[] header = dataTable.thead[0].tr.th[3..-2]*.text()
-      def rows = (0..31).collect { dataTable.tbody[0].tr[it].td[3..-2]*.text() }
+      def rows = (0..Name.values().size() - 1).collect { dataTable.tbody[0].tr[it].td[3..-2]*.text() }
       parseGames(rows, currentWeek)
    }
 
