@@ -4,13 +4,9 @@ import groovy.time.TimeCategory
 import groovy.time.TimeDuration
 import nfl.common.Constants
 import nfl.common.Utils
-import nfl.domain.Game
+import nfl.common.WeekConfig
 import nfl.domain.Pick
-import nfl.domain.Team
 import nfl.domain.Week
-import org.ccil.cowan.tagsoup.Parser
-
-import java.math.RoundingMode
 
 import static Constants.Name
 
@@ -24,19 +20,15 @@ class HeuristicMethod {
 
    static final long RANDOM_ITERATIONS = 100L
 
+   WeekConfig weekConfig
+
    public static void main(String[] args) {
       Date start = new Date()
       println "Start: ${start}"
 
       boolean download = false
-      ingestGames(download)
-
-      List<Name> remaining = loadCurrentState()
-
-      forward(remaining).prettyPrint('Forward2')
-      reverse(remaining).prettyPrint('Reverse2')
-      //middleOut(remaining).prettyPrint('Middle Out')
-      random(remaining).prettyPrint('Random')
+      WeekConfig context = new WeekConfig().init(download)
+      new HeuristicMethod(weekConfig: context).process()
 
       TimeDuration td = TimeCategory.minus(new Date(), start)
       println ""
@@ -44,44 +36,50 @@ class HeuristicMethod {
       println "End: ${new Date()}"
    }
 
-   static Pick forward(List<Name> remaining) {
-      def weekRange = (Utils.currentWeekNumber()..Constants.FINAL_WEEK)
-      computePick(remaining, weekRange.toArray() as List<Integer>, 1L)
+   def process() {
+      forward().prettyPrint('Forward')
+      reverse().prettyPrint('Reverse')
+      //middleOut().prettyPrint('Middle Out')
+      random().prettyPrint('Random')
    }
 
-   static Pick reverse(List<Name> remaining) {
-      def weekRange = (Constants.FINAL_WEEK..Utils.currentWeekNumber())
-      computePick(remaining, weekRange.toArray() as List<Integer>, 1L)
+   Pick forward() {
+      def weekRange = (weekConfig.weekNumber..Constants.FINAL_WEEK)
+      computePick(weekRange.toArray() as List<Integer>, 1L)
+   }
+
+   Pick reverse() {
+      def weekRange = (Constants.FINAL_WEEK..weekConfig.weekNumber)
+      computePick(weekRange.toArray() as List<Integer>, 1L)
    }
 
    // TODO not implemented yet
-   static Pick middleOut(List<Name> remaining) {
-      forward(remaining)
+   Pick middleOut() {
+      forward()
    }
 
-   static Pick random(List<Name> remaining) {
+   Pick random() {
       long seed = System.nanoTime()
       Random random = new Random(seed)
-      Pick best = Pick.getSpike()
-      List<Integer> weeks = (Utils.currentWeekNumber()..Constants.FINAL_WEEK).toArray() as List<Integer>
+      Pick best = Pick.getSpike(weekConfig)
+      List<Integer> weeks = (weekConfig.weekNumber..Constants.FINAL_WEEK).toArray() as List<Integer>
       (1..RANDOM_ITERATIONS).each {
          Collections.shuffle(weeks, random);
-         Pick candidate = computePick(remaining, weeks, it)
+         Pick candidate = computePick(weeks, it)
          best = (candidate.total < best.total) ? candidate : best
       }
       best
    }
 
-   static Pick computePick(List<Name> remaining, List<Integer> weekNumbers, long iteration) {
-      Pick pick = new Pick(iteration: iteration, teams: [], total: 0)
-      int currentWeek = Utils.currentWeekNumber()
+   Pick computePick(List<Integer> weekNumbers, long iteration) {
+      Pick pick = new Pick(iteration: iteration, teams: [], total: 0, weekConfig: weekConfig)
       int count = weekNumbers.inject(0) { sum, item -> sum + Utils.picksForWeek(item) }
       pick.teams[count - 1] = null
 
-      List<Name> available = remaining.collect()
+      List<Name> available = weekConfig.remaining.collect()
 
       weekNumbers.each { Integer weekNumber ->
-         Week week = Week.WEEKS[weekNumber]
+         Week week = weekConfig.weeks[weekNumber]
          Map<Name, BigDecimal> filtered = week.spreads.findAll { it.key in available }
          Map<Name, BigDecimal> sortedMap = filtered.sort { x, y ->
             x.value <=> y.value ?:
@@ -96,10 +94,10 @@ class HeuristicMethod {
 
             if (!spread) {
                // available teams have a BYE week so abandon this Pick
-               return Pick.getSpike()
+               return Pick.getSpike(weekConfig)
             }
 
-            int teamsIndex = computeTeamsIndex(currentWeek, weekNumber, pickCount, pickIndex)
+            int teamsIndex = computeTeamsIndex(weekNumber, pickIndex)
             Name name = spread.key
 
             pick.teams.set(teamsIndex, name)
@@ -113,92 +111,14 @@ class HeuristicMethod {
          }
       }
 
-      pick.teams.any { !it } ? Pick.getSpike() : pick
+      pick.teams.any { !it } ? Pick.getSpike(weekConfig) : pick
    }
 
-   protected static int computeTeamsIndex(int currentWeek, int weekNumber, int pickCount, int pickIndex) {
-      ((currentWeek..weekNumber).inject(0) { sum, item -> sum + Utils.picksForWeek(item) }) - pickCount + pickIndex - 1
-   }
-
-   protected static List<Name> loadCurrentState() {
-      List used = Utils.loadUsed()
-      List<Name> remaining = Name.values()
-      remaining.removeAll(used)
-      printRemainingCount(remaining)
-      remaining
-   }
-
-   protected static ingestGames(boolean download) {
-      File file = new File(Constants.SURVIVOR_FILE)
-      if (download) {
-         Utils.download(file)
+   protected int computeTeamsIndex(int weekNumber, int pickIndex) {
+      int result = (weekConfig.weekNumber..weekNumber).inject(0) { sum, item ->
+         sum + Utils.picksForWeek(item as int)
       }
-      parseFile(file)
-   }
-
-   protected static parseFile(File file) {
-      String html = file.text
-      def tagsoupParser = new Parser()
-      def slurper = new XmlSlurper(tagsoupParser)
-      def page = slurper.parseText(html)
-      String title = page.head.title.text()
-      int currentWeek = (title =~ /NFL Survivor Pool Picks Grid: Week (\d+) Help/)[0][1].toInteger()
-      println "This is week number ${currentWeek}"
-      Week.WEEKS.clear()
-      (currentWeek..Constants.FINAL_WEEK).each { int week -> Week.WEEKS.put(week, new Week(week: week)) }
-      def dataTable = page.depthFirst().findAll { it.@class.text() == 'datatable' }
-      String[] header = dataTable.thead[0].tr.th[3..-2]*.text()
-      def rows = (0..Name.values().size() - 1).collect { dataTable.tbody[0].tr[it].td[3..-2]*.text() }
-      parseGames(rows, currentWeek)
-   }
-
-   protected static printRemainingCount(List<Name> remaining) {
-      int remainingCount = remaining.size()
-      def permutationCount = (1..remainingCount).inject(1) { sum, value -> sum * (value as BigDecimal) }
-
-      def permutationGenerator = new PermutationGenerator(remaining)
-      assert permutationGenerator.total == permutationCount as BigInteger
-
-      String prettyCount = Utils.prettyPrint(permutationCount)
-
-      println "Working with ${remainingCount} remaining teams.  ${prettyCount} permutations."
-   }
-
-   private static parseGames(List rows, int currentWeek) {
-      rows.each { row ->
-         Name name = ((row[0] =~ /^([A-Z]+)/)[0][1]) as Name
-         Team team = Team.TEAMS[name]
-
-         (currentWeek..Constants.FINAL_WEEK).each { int week ->
-            Game game = null
-            int offset = week - currentWeek + 1
-            def empty = [[null, null, null, null]]
-            def all, awayFlag, opponent, spreadValue
-            if (row[offset] =~ /PK$/) {
-               spreadValue = '0.0'
-               (all, awayFlag, opponent) = (row[offset] =~ /(@)?([A-Z]+)PK$/)[0]
-            } else {
-               (all, awayFlag, opponent, spreadValue) = ((row[offset] =~ /(@)?([A-Z]+)([+\-0-9\.]+)/) ?: empty)[0]
-            }
-            if (opponent) {
-               BigDecimal spread = new BigDecimal(spreadValue).setScale(1, RoundingMode.HALF_UP)
-               BigDecimal homeSpread = spread
-               BigDecimal awaySpread = spread.negate()
-               Team home = team
-               Team away = Team.TEAMS[opponent as Name]
-               if (awayFlag) {
-                  home = away
-                  homeSpread = awaySpread
-                  away = team
-                  awaySpread = homeSpread.negate()
-               }
-               game = new Game(week: week, home: home, away: away, homeSpread: homeSpread, awaySpread: awaySpread)
-               Week.WEEKS[week].games << game
-               Week.WEEKS[week].spreads.put(name, spread)
-            }
-            team.games.put(week, game)
-         }
-      }
+      result - Utils.picksForWeek(weekNumber) + pickIndex - 1
    }
 
 }

@@ -9,7 +9,6 @@ import static nfl.common.Constants.*
  */
 @ToString(includeNames = true, excludes = 'games')
 class Week {
-   static final Map<Integer, Week> WEEKS = [:]
 
    Integer week
    boolean skip

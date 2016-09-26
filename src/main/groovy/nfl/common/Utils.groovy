@@ -32,8 +32,4 @@ class Utils {
       (week < Constants.DOUBLE_PICKS_START_WEEK) ? 1 : 2
    }
 
-   static int currentWeekNumber() {
-      Week.WEEKS.iterator().next().key
-   }
-
 }

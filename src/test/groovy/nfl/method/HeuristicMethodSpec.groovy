@@ -1,8 +1,7 @@
 package nfl.method
 
-import nfl.common.Constants
+import nfl.common.WeekConfig
 import nfl.domain.Pick
-import nfl.domain.Week
 import spock.lang.Specification
 
 import nfl.common.Constants.Name
@@ -12,32 +11,26 @@ import nfl.common.Constants.Name
  */
 class HeuristicMethodSpec extends Specification {
 
+   HeuristicMethod sut
+
    void setup() {
+      sut = new HeuristicMethod()
+
+      WeekConfig weekConfig = new WeekConfig()
+      weekConfig.loadTeams()
+      File html = new File(this.class.getResource('/2016/week01-survivor.html').file)
+      weekConfig.parseFile(html)
+      weekConfig.remaining = Name.values()
+
+      sut.weekConfig = weekConfig
    }
 
    void cleanup() {
    }
 
-   def "test parseFile happy"() {
-      setup:
-      File html = new File(this.class.getResource('/2016/week01-survivor.html').file)
-      HeuristicMethod.parseFile(html)
-
-      when:
-      def a = 1
-
-      then:
-      1 == Week.WEEKS[1].week
-   }
-
    def "test forward week 01"() {
-      setup:
-      File html = new File(this.class.getResource('/2016/week01-survivor.html').file)
-      HeuristicMethod.parseFile(html)
-      List<Name> remaining = Name.values()
-
       when:
-      Pick pick = HeuristicMethod.forward(remaining)
+      Pick pick = sut.forward()
 
       then:
       pick
@@ -45,13 +38,8 @@ class HeuristicMethodSpec extends Specification {
    }
 
    def "test reverse week 01"() {
-      setup:
-      File html = new File(this.class.getResource('/2016/week01-survivor.html').file)
-      HeuristicMethod.parseFile(html)
-      List<Name> remaining = Name.values()
-
       when:
-      Pick pick = HeuristicMethod.reverse(remaining)
+      Pick pick = sut.reverse()
 
       then:
       pick

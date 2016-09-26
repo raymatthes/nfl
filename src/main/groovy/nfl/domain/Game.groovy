@@ -16,7 +16,6 @@ class Game implements Comparable {
    BigDecimal homeSpread
    BigDecimal awaySpread
 
-
    @Override
    int compareTo(Object that) {
       this.week <=> that.week ?:
