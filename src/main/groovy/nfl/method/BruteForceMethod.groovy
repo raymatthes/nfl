@@ -3,15 +3,12 @@ package nfl.method
 import groovy.time.TimeCategory
 import groovy.time.TimeDuration
 import nfl.common.Utils
+import nfl.common.WeekConfig
 import nfl.domain.Game
 import nfl.domain.Pick
-import nfl.domain.Team
-import nfl.domain.Week
-import org.ccil.cowan.tagsoup.Parser
 
-import java.math.RoundingMode
-
-import static nfl.common.Constants.*
+import static nfl.common.Constants.FINAL_WEEK
+import static nfl.common.Constants.Name
 
 /**
  * a less practical method that examines every pick permutation
@@ -23,54 +20,37 @@ import static nfl.common.Constants.*
  */
 class BruteForceMethod {
 
+   WeekConfig weekConfig
+
    public static void main(String[] args) {
       Date start = new Date()
       println "Start: ${start}"
 
-      def tagsoupParser = new Parser()
-      def slurper = new XmlSlurper(tagsoupParser)
+      boolean download = false
+      WeekConfig context = new WeekConfig().init(download)
+      new BruteForceMethod(weekConfig: context).process()
 
-      File file = new File(SURVIVOR_FILE)
+      TimeDuration td = TimeCategory.minus(new Date(), start)
+      println ""
+      println "Elapsed: ${td}"
+      println "End: ${new Date()}"
+   }
 
-      //Utils.download(file)
+   def process() {
+      force().prettyPrint('Brute Force')
+   }
 
-      String html = file.text
+   Pick force() {
+      Date start = new Date()
 
-      def page = slurper.parseText(html)
-      String title = page.head.title.text()
-      int currentWeek = (title =~ /NFL Survivor Pool Picks Grid: Week (\d+) Help/)[0][1].toInteger()
-
-      println "This is week number ${currentWeek}"
-
-      (currentWeek..FINAL_WEEK).each { int week -> Week.WEEKS.put(week, new Week(week: week)) }
-
-      def dataTable = page.depthFirst().findAll { it.@class.text() == 'datatable' }
-
-      String[] header = dataTable.thead[0].tr.th[3..-2]*.text()
-      def rows = (0..31).collect { dataTable.tbody[0].tr[it].td[3..-2]*.text() }
-
-      //println header
-      //rows.each { println it }
-
-      parseGames(rows, currentWeek)
-
-      List used = Utils.loadUsed()
-
-      List<Name> remaining = Name.values()
-      remaining.removeAll(used)
-
-      int remainingCount = remaining.size()
+      int remainingCount = weekConfig.remaining.size()
       def permutationCount = (1..remainingCount).inject(1) { sum, value -> sum * (value as BigDecimal) }
 
-      def permutationGenerator = new PermutationGenerator(remaining)
+      PermutationGenerator<Name> permutationGenerator = new PermutationGenerator<Name>(weekConfig.remaining)
       assert permutationGenerator.total == permutationCount as BigInteger
 
-      String prettyCount = Utils.prettyPrint(permutationCount)
-
-      println "Working with ${remainingCount} remaining teams.  ${prettyCount} permutations."
-
       BigDecimal spike = BigDecimal.valueOf(1000L)
-      def best = new Pick(iteration: 0, teams: [], total: Long.MAX_VALUE)
+      Pick best = Pick.getSpike(weekConfig)
 
       //long loopLimit = 100000000L
       long loopLimit = 6L
@@ -79,14 +59,14 @@ class BruteForceMethod {
       permutationGenerator.find {
          loopIndex++
 
-         BigDecimal total = (currentWeek..FINAL_WEEK).inject(0) { sum, int week ->
-            int offset = (week - currentWeek) * 2
+         BigDecimal total = (weekConfig.weekNumber..FINAL_WEEK).inject(BigDecimal.ZERO) { sum, weekNumber ->
+            int offset = (weekNumber - weekConfig.weekNumber) * 2
             Name team1 = it[offset]
             Name team2 = it[offset + 1]
-            BigDecimal spread1 = Week.WEEKS.get(week).spreads.get(team1)
-            BigDecimal spread2 = Week.WEEKS.get(week).spreads.get(team2)
+            BigDecimal spread1 = weekConfig.weeks.get(weekNumber).spreads.get(team1)
+            BigDecimal spread2 = weekConfig.weeks.get(weekNumber).spreads.get(team2)
 
-            if (spread1 == null || spread2 == null || isMatchup(week, team1, team2)) {
+            if (spread1 == null || spread2 == null || isMatchup(weekNumber as int, team1, team2)) {
                // prevent choosing this permutation by spiking it
                sum += spike
             } else {
@@ -96,13 +76,11 @@ class BruteForceMethod {
             sum
          }
 
-         // println(new Pick(iteration: loopIndex, teams: it, total: total))
-
          if (total < best.total) {
-            best = new Pick(iteration: loopIndex, teams: it, total: total)
+            best = new Pick(iteration: loopIndex, teams: it, total: total, weekConfig: weekConfig)
          }
 
-         if (loopIndex % 1000000L == 0) {
+         if (loopIndex % 1000000L == 0L) {
             TimeDuration td = TimeCategory.minus(new Date(), start)
             float percent = ((loopIndex as float) / permutationCount as float) * (100 as float)
             String percentString = sprintf('%.10f', percent)
@@ -113,54 +91,13 @@ class BruteForceMethod {
          false
       }
 
-      TimeDuration td = TimeCategory.minus(new Date(), start)
-      println ""
-      println "Best pick: ${best}"
-      println "Elapsed: ${td}"
-      println "End: ${new Date()}"
+      best
    }
 
-   static boolean isMatchup(int week, Name team1, Name team2) {
-      Game game = Team.TEAMS[team1].games[week]
+   protected boolean isMatchup(int week, Name team1, Name team2) {
+      Game game = weekConfig.teams[team1].games[week]
       (game.home.name == team1 && game.away.name == team2) ||
             (game.away.name == team1 && game.home.name == team2)
-   }
-
-   private static parseGames(List rows, int currentWeek) {
-      rows.each { row ->
-         Name name = ((row[0] =~ /^([A-Z]+)/)[0][1]) as Name
-         Team team = Team.TEAMS[name]
-
-         (currentWeek..FINAL_WEEK).each { int week ->
-            Game game = null
-            int offset = week - currentWeek + 1
-            def empty = [[null, null, null, null]]
-            def all, awayFlag, opponent, spreadValue
-            if (row[offset] =~ /PK$/) {
-               spreadValue = '0.0'
-               (all, awayFlag, opponent) = (row[offset] =~ /(@)?([A-Z]+)PK$/)[0]
-            } else {
-               (all, awayFlag, opponent, spreadValue) = ((row[offset] =~ /(@)?([A-Z]+)([+\-0-9\.]+)/) ?: empty)[0]
-            }
-            if (opponent) {
-               BigDecimal spread = new BigDecimal(spreadValue).setScale(1, RoundingMode.HALF_UP)
-               BigDecimal homeSpread = spread
-               BigDecimal awaySpread = spread.negate()
-               Team home = team
-               Team away = Team.TEAMS[opponent as Name]
-               if (awayFlag) {
-                  home = away
-                  homeSpread = awaySpread
-                  away = team
-                  awaySpread = homeSpread.negate()
-               }
-               game = new Game(week: week, home: home, away: away, homeSpread: homeSpread, awaySpread: awaySpread)
-               Week.WEEKS[week].games << game
-               Week.WEEKS[week].spreads.put(name, spread)
-            }
-            team.games.put(week, game)
-         }
-      }
    }
 
 }

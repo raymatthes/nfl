@@ -29,10 +29,8 @@ class WeekConfig {
    }
 
    def loadTeams() {
-      teams = Name.inject([:]) { teams, team ->
-         teams[team] = new Team(name: team)
-         teams
-      }
+      teams.clear()
+      Name.values().each { teams[it] = new Team(name: it) }
    }
 
    protected loadRemaining() {
@@ -57,7 +55,7 @@ class WeekConfig {
       def page = slurper.parseText(html)
 
       String title = page.head.title.text()
-      String pattern =  /(\d+) NFL Survivor Pool Picks Grid: Week (\d+) Help/
+      String pattern = /(\d+) NFL Survivor Pool Picks Grid: Week (\d+) Help/
       def matcher = (title =~ pattern)
       year = matcher[0][1].toInteger()
       weekNumber = matcher[0][2].toInteger()
