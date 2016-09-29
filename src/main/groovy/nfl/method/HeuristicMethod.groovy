@@ -18,7 +18,7 @@ import static Constants.Name
  */
 class HeuristicMethod {
 
-   static final long RANDOM_ITERATIONS = 100L
+   static final long RANDOM_ITERATIONS = 100000L
 
    WeekConfig weekConfig
 

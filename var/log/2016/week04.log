@@ -1,0 +1,60 @@
+/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/bin/java -Didea.launcher.port=7533 "-Didea.launcher.bin.path=/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath "/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/tools.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Users/rmatthes/src/nfl/build/classes/main:/Users/rmatthes/src/nfl/build/resources/main:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.3.7/feb6df9c6936c797159091a451ed8590d67101dc/groovy-all-2.3.7.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.ccil.cowan.tagsoup/tagsoup/1.2/639fd364750d7363c85797dc944b4a80f78fa684/tagsoup-1.2.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.15/3b132bea69e8ee099f416044970997bde80f4ea6/snakeyaml-1.15.jar:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar" com.intellij.rt.execution.application.AppMain nfl.method.HeuristicMethod
+Start: Thu Sep 29 16:02:12 MDT 2016
+This is 2016 week number 4
+Working with 28 remaining teams.  304,888,344,611,713,860,501,504,000,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[ARI, CIN, CAR, NE, SEA, TEN, GB, KC, DEN, NYJ, MIN, SD, BAL, TB, PIT, NYG, HOU, BUF, OAK, CHI, LA, IND, ATL, WAS, JAX, NO, SF, CLE], total:-124.0)
+04 ARI(-7.5) CIN(-7.5)
+05 CAR(-8.0) NE(-7.5)
+06 SEA(-7.0) TEN(-6.0)
+07 GB(-11.0) KC(-9.0)
+08 DEN(-8.0) NYJ(-7.0)
+09 MIN(-6.5) SD(-4.5)
+10 BAL(-10.5) TB(-6.5)
+11 PIT(-10.5) NYG(-7.0)
+12 HOU(-4.0) BUF(-3.5)
+13 OAK(-4.0) CHI(-3.0)
+14 LA(-1.5) IND(-0.5)
+15 ATL(-7.0) WAS(4.0)
+16 JAX(-3.0) NO(1.0)
+17 SF(7.0) CLE(14.5)
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:1, teams:[JAX, NO, WAS, CLE, BUF, CHI, ATL, IND, TEN, OAK, SD, SF, TB, NYJ, SEA, NE, NYG, HOU, BAL, GB, CIN, DEN, ARI, KC, CAR, LA, PIT, MIN], total:-119.5)
+04 JAX(2.5) NO(4.0)
+05 WAS(4.0) CLE(7.5)
+06 BUF(-5.5) CHI(-1.5)
+07 ATL(-3.0) IND(-1.5)
+08 TEN(-3.0) OAK(1.0)
+09 SD(-4.5) SF(-0.5)
+10 TB(-6.5) NYJ(-4.0)
+11 SEA(-7.0) NE(-5.5)
+12 NYG(-6.5) HOU(-4.0)
+13 BAL(-6.5) GB(-6.5)
+14 CIN(-9.0) DEN(-6.5)
+15 ARI(-9.5) KC(-9.5)
+16 CAR(-7.5) LA(-6.5)
+17 PIT(-14.5) MIN(-9.5)
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:25729, teams:[WAS, NE, IND, LA, TEN, BUF, CIN, GB, DEN, NYJ, KC, SEA, ARI, BAL, CAR, NYG, CHI, NO, OAK, SD, TB, SF, ATL, HOU, JAX, CLE, PIT, MIN], total:-176.0)
+04 WAS(-7.5) NE(-6.0)
+05 IND(-6.0) LA(-3.0)
+06 TEN(-6.0) BUF(-5.5)
+07 CIN(-13.5) GB(-11.0)
+08 DEN(-8.0) NYJ(-7.0)
+09 KC(-9.5) SEA(-8.0)
+10 ARI(-11.0) BAL(-10.5)
+11 CAR(-10.0) NYG(-7.0)
+12 CHI(-2.0) NO(-1.0)
+13 OAK(-4.0) SD(-3.0)
+14 TB(-4.0) SF(4.0)
+15 ATL(-7.0) HOU(-7.0)
+16 JAX(-3.0) CLE(4.5)
+17 PIT(-14.5) MIN(-9.5)
+
+
+Elapsed: 41.759 seconds
+End: Thu Sep 29 16:02:54 MDT 2016
+
+Process finished with exit code 0
