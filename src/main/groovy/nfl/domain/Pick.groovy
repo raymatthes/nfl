@@ -26,6 +26,10 @@ class Pick {
       println "Pick strategy: ${title}"
       println this
       int currentWeek = weekConfig.weekNumber
+      if (!teams) {
+         println 'Pick strategy failed.\n'
+         return
+      }
       Iterator teamsIterator = teams.iterator()
       (currentWeek..Constants.FINAL_WEEK).each { int weekNumber ->
          print "${String.format('%02d', weekNumber)} "
