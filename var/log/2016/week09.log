@@ -1,0 +1,45 @@
+/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/bin/java -Didea.launcher.port=7532 "-Didea.launcher.bin.path=/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath "/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/lib/tools.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Users/rmatthes/src/nfl/build/classes/main:/Users/rmatthes/src/nfl/build/resources/main:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.3.7/feb6df9c6936c797159091a451ed8590d67101dc/groovy-all-2.3.7.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.ccil.cowan.tagsoup/tagsoup/1.2/639fd364750d7363c85797dc944b4a80f78fa684/tagsoup-1.2.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.15/3b132bea69e8ee099f416044970997bde80f4ea6/snakeyaml-1.15.jar:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar" com.intellij.rt.execution.application.AppMain nfl.method.HeuristicMethod
+Start: Wed Nov 02 22:24:04 MDT 2016
+This is 2016 week number 9
+Working with 18 remaining teams.  6,402,373,705,728,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[GB, KC, ARI, BAL, PIT, NYG, NO, SEA, CHI, SD, CAR, MIN, ATL, JAX, LA, CLE, TB, SF], total:-68.5)
+09 GB(-7.5) KC(-7.5)
+10 ARI(-11.0) BAL(-9.5)
+11 PIT(-7.0) NYG(-6.5)
+12 NO(-3.5) SEA(-3.5)
+13 CHI(-3.5) SD(-3.5)
+14 CAR(-5.0) MIN(-4.0)
+15 ATL(-10.0) JAX(5.5)
+16 LA(-6.0) CLE(3.5)
+17 TB(3.0) SF(7.5)
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:1, teams:[SF, CLE, SD, TB, KC, JAX, NYG, BAL, CHI, NO, CAR, ARI, ATL, SEA, LA, GB, PIT, MIN], total:-63.0)
+09 SF(3.5) CLE(7.5)
+10 SD(-4.0) TB(-3.0)
+11 KC(-6.5) JAX(3.5)
+12 NYG(-5.0) BAL(2.0)
+13 CHI(-3.5) NO(-3.5)
+14 CAR(-5.0) ARI(-3.5)
+15 ATL(-10.0) SEA(-7.5)
+16 LA(-6.0) GB(-3.5)
+17 PIT(-10.5) MIN(-8.0)
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:5775, teams:[KC, SD, ARI, BAL, NYG, CAR, NO, CLE, GB, CHI, TB, SF, ATL, SEA, LA, JAX, PIT, MIN], total:-91.0)
+09 KC(-7.5) SD(-4.5)
+10 ARI(-11.0) BAL(-9.5)
+11 NYG(-6.5) CAR(-4.0)
+12 NO(-3.5) CLE(5.0)
+13 GB(-6.5) CHI(-3.5)
+14 TB(-1.0) SF(2.5)
+15 ATL(-10.0) SEA(-7.5)
+16 LA(-6.0) JAX(1.0)
+17 PIT(-10.5) MIN(-8.0)
+
+
+Elapsed: 22.763 seconds
+End: Wed Nov 02 22:24:26 MDT 2016
+
+Process finished with exit code 0
