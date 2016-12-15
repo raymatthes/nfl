@@ -26,7 +26,7 @@ class HeuristicMethod {
       Date start = new Date()
       println "Start: ${start}"
 
-      boolean download = false
+      boolean download = true
       WeekConfig context = new WeekConfig().init(download)
       new HeuristicMethod(weekConfig: context).process()
 
