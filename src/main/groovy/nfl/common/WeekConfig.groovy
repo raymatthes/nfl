@@ -55,7 +55,7 @@ class WeekConfig {
       def page = slurper.parseText(html)
 
       String title = page.head.title.text()
-      String pattern = /(\d+) NFL Survivor Pool Picks Grid: Week (\d+) Help/
+      String pattern = /(\d+) NFL Survivor Pool Picks Grid - Week (\d+) Help/
       def matcher = (title =~ pattern)
       year = matcher[0][1].toInteger()
       weekNumber = matcher[0][2].toInteger()
@@ -63,7 +63,7 @@ class WeekConfig {
 
       weeks.clear()
       (weekNumber..Constants.FINAL_WEEK).each { int week -> weeks.put(week, new Week(week: week)) }
-      def dataTable = page.depthFirst().findAll { it.@class.text() == 'datatable' }
+      def dataTable = page.depthFirst().find {it.@id.text() == 'grid'}
       String[] header = dataTable.thead[0].tr.th[3..-2]*.text()
       def rows = (0..Name.values().size() - 1).collect { dataTable.tbody[0].tr[it].td[3..-2]*.text() }
       parseGames(rows)

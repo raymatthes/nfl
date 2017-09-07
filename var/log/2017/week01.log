@@ -1,0 +1,70 @@
+Start: Wed Sep 06 20:07:53 MDT 2017
+This is 2017 week number 1
+Working with 32 remaining teams.  263,130,836,933,693,530,167,218,012,160,000,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[BUF, SEA, IND, NE, DAL, GB, PIT, NYG, HOU, WAS, MIA, TEN, PHI, ATL, ARI, NO, TB, CAR, MIN, DEN, CIN, KC, LAC, CHI, LAR, OAK, DET, BAL, JAX, NYJ, SF, CLE], total:-166.0)
+01 BUF(-8.5) 
+02 SEA(-13.0) 
+03 IND(-9.5) NE(-7.5) 
+04 DAL(-10.5) GB(-10.0) 
+05 PIT(-8.0) NYG(-7.0) 
+06 HOU(-9.5) WAS(-8.0) 
+07 MIA(-8.0) TEN(-5.0) 
+08 PHI(-8.0) ATL(-7.5) 
+09 ARI(-4.0) NO(-1.5) 
+10 TB(-9.5) CAR(-3.5) 
+11 MIN(-7.5) DEN(-4.0) 
+12 CIN(-8.0) KC(-6.5) 
+13 LAC(-7.5) CHI(-4.0) 
+14 LAR(2.5) OAK(3.0) 
+15 DET(-6.5) BAL(-4.0) 
+16 JAX(-2.0) NYJ(2.0) 
+17 SF(3.5) CLE(11.5) 
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:1, teams:[CHI, LAR, CAR, SF, KC, NYJ, CLE, DET, WAS, OAK, MIA, IND, PHI, BAL, BUF, ATL, TB, NYG, MIN, JAX, CIN, DAL, ARI, LAC, DEN, HOU, SEA, NO, TEN, GB, NE, PIT], total:-183.0)
+01 CHI(6.5) 
+02 LAR(2.0) 
+03 CAR(-3.5) SF(-1.5) 
+04 KC(-5.0) NYJ(1.5) 
+05 CLE(-1.5) DET(-1.5) 
+06 WAS(-8.0) OAK(-7.5) 
+07 MIA(-8.0) IND(-6.0) 
+08 PHI(-8.0) BAL(-3.5) 
+09 BUF(-2.0) ATL(-1.0) 
+10 TB(-9.5) NYG(-5.5) 
+11 MIN(-7.5) JAX(-3.0) 
+12 CIN(-8.0) DAL(-8.0) 
+13 ARI(-8.0) LAC(-7.5) 
+14 DEN(-9.5) HOU(-9.5) 
+15 SEA(-13.5) NO(-7.0) 
+16 TEN(-7.5) GB(-6.5) 
+17 NE(-14.0) PIT(-11.5) 
+
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:815260, teams:[LAR, BAL, IND, SF, GB, ARI, DET, NYJ, WAS, OAK, MIA, DAL, PHI, ATL, NYG, BUF, TB, CLE, MIN, JAX, CIN, CAR, LAC, CHI, DEN, HOU, SEA, NO, TEN, KC, NE, PIT], total:-226.5)
+01 LAR(-4.0)
+02 BAL(-9.5) 
+
+03 IND(-9.5) SF(-1.5) 
+04 GB(-10.0) ARI(-9.5) 
+05 DET(-1.5) NYJ(1.5) 
+06 WAS(-8.0) OAK(-7.5) 
+07 MIA(-8.0) DAL(-7.5) 
+08 PHI(-8.0) ATL(-7.5) 
+09 NYG(-9.5) BUF(-2.0) 
+10 TB(-9.5) CLE(-3.5) 
+11 MIN(-7.5) JAX(-3.0) 
+12 CIN(-8.0) CAR(-4.0) 
+13 LAC(-7.5) CHI(-4.0) 
+14 DEN(-9.5) HOU(-9.5) 
+15 SEA(-13.5) NO(-7.0) 
+16 TEN(-7.5) KC(-5.0) 
+17 NE(-14.0) PIT(-11.5) 
+
+
+Elapsed: 8 minutes, 52.589 seconds
+End: Wed Sep 06 20:42:39 MDT 2017
+
+

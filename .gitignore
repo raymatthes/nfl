@@ -3,3 +3,4 @@ nfl.iml
 build
 .gradle
 .DS_Store
+out/
