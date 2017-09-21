@@ -1,0 +1,64 @@
+/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/bin/java "-javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=55907:/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/tools.jar:/Users/rmatthes/src/nfl/out/production/classes:/Users/rmatthes/src/nfl/out/production/resources:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.3.7/feb6df9c6936c797159091a451ed8590d67101dc/groovy-all-2.3.7.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.ccil.cowan.tagsoup/tagsoup/1.2/639fd364750d7363c85797dc944b4a80f78fa684/tagsoup-1.2.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.15/3b132bea69e8ee099f416044970997bde80f4ea6/snakeyaml-1.15.jar nfl.method.HeuristicMethod
+objc[10979]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/bin/java (0x10668d4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1067554e0). One of the two will be used. Which one is undefined.
+Start: Wed Sep 20 21:43:06 MDT 2017
+This is 2017 week number 3
+Working with 30 remaining teams.  265,252,859,812,191,058,636,308,480,000,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[NE, GB, ARI, DAL, PIT, IND, HOU, WAS, MIA, TEN, ATL, PHI, SEA, NYG, TB, CAR, DEN, MIN, KC, CIN, LAC, OAK, BUF, DET, NO, JAX, CHI, SF, CLE, NYJ], total:-173.0)
+03 NE(-13.5) GB(-8.5)
+04 ARI(-10.5) DAL(-10.0)
+05 PIT(-9.5) IND(-7.0)
+06 HOU(-9.5) WAS(-9.5)
+07 MIA(-11.5) TEN(-6.5)
+08 ATL(-11.0) PHI(-11.0)
+09 SEA(-9.5) NYG(-6.0)
+10 TB(-13.5) CAR(-4.0)
+11 DEN(-6.5) MIN(-6.5)
+12 KC(-9.5) CIN(-8.5)
+13 LAC(-9.5) OAK(-5.0)
+14 BUF(-3.5) DET(3.5)
+15 NO(-10.0) JAX(0.5)
+16 CHI(-4.0) SF(3.5)
+17 CLE(15.0) NYJ(18.5)
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:1, teams:[SF, CHI, NYJ, BUF, IND, CLE, WAS, JAX, MIA, TEN, OAK, CAR, ARI, HOU, TB, NYG, MIN, DET, PHI, CIN, DAL, LAC, DEN, ATL, NO, SEA, GB, KC, NE, PIT], total:-187.5)
+03 SF(2.5) CHI(7.5)
+04 NYJ(4.0) BUF(9.5)
+05 IND(-7.0) CLE(-4.0)
+06 WAS(-9.5) JAX(-3.0)
+07 MIA(-11.5) TEN(-6.5)
+08 OAK(-4.0) CAR(3.0)
+09 ARI(-6.5) HOU(-6.0)
+10 TB(-13.5) NYG(-6.5)
+11 MIN(-6.5) DET(-3.5)
+12 PHI(-9.5) CIN(-8.5)
+13 DAL(-9.5) LAC(-9.5)
+14 DEN(-13.5) ATL(-9.5)
+15 NO(-10.0) SEA(-9.5)
+16 GB(-6.5) KC(-6.5)
+17 NE(-18.5) PIT(-15.0)
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:322424, teams:[SF, NYJ, GB, ARI, IND, CLE, WAS, OAK, MIA, DAL, ATL, PHI, SEA, HOU, TB, NYG, MIN, JAX, CIN, CAR, KC, LAC, DEN, BUF, NO, DET, TEN, CHI, NE, PIT], total:-245.5)
+03 SF(2.5) NYJ(6.0)
+04 GB(-11.5) ARI(-10.5)
+05 IND(-7.0) CLE(-4.0)
+06 WAS(-9.5) OAK(-7.0)
+07 MIA(-11.5) DAL(-10.5)
+08 ATL(-11.0) PHI(-11.0)
+09 SEA(-9.5) HOU(-6.0)
+10 TB(-13.5) NYG(-6.5)
+11 MIN(-6.5) JAX(-3.5)
+12 CIN(-8.5) CAR(-8.0)
+13 KC(-10.0) LAC(-9.5)
+14 DEN(-13.5) BUF(-3.5)
+15 NO(-10.0) DET(-8.0)
+16 TEN(-6.5) CHI(-4.0)
+17 NE(-18.5) PIT(-15.0)
+
+
+Elapsed: 7 minutes, 4.146 seconds
+End: Wed Sep 20 21:50:10 MDT 2017
+
+Process finished with exit code 0
