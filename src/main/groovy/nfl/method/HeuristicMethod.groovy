@@ -18,7 +18,7 @@ import static nfl.common.Constants.Name
  */
 class HeuristicMethod {
 
-   static final long RANDOM_ITERATIONS = 1000000L
+   static final long RANDOM_ITERATIONS = 100000L
 
    WeekConfig weekConfig
 

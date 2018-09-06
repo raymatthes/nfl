@@ -41,7 +41,7 @@ class WeekConfig {
    }
 
    protected loadWeeks(boolean download) {
-      File file = new File(Constants.SURVIVOR_FILE)
+      File file = new File(SURVIVOR_FILE)
       if (download) {
          Utils.download(file)
       }
@@ -62,8 +62,8 @@ class WeekConfig {
       println "This is ${year} week number ${weekNumber}"
 
       weeks.clear()
-      (weekNumber..Constants.FINAL_WEEK).each { int week -> weeks.put(week, new Week(week: week)) }
-      def dataTable = page.depthFirst().find {it.@id.text() == 'grid'}
+      (weekNumber..FINAL_WEEK).each { int week -> weeks.put(week, new Week(week: week)) }
+      def dataTable = page.depthFirst().find { it.@id.text() == 'grid' }
       String[] header = dataTable.thead[0].tr.th[3..-2]*.text()
       def rows = (0..Name.values().size() - 1).collect { dataTable.tbody[0].tr[it].td[3..-2]*.text() }
       parseGames(rows)
@@ -86,7 +86,7 @@ class WeekConfig {
          Name name = ((row[0] =~ /^([A-Z]+)/)[0][1]) as Name
          Team team = teams[name]
 
-         (weekNumber..Constants.FINAL_WEEK).each { int week ->
+         (weekNumber..FINAL_WEEK).each { int week ->
             Game game = null
             int offset = week - weekNumber + 1
             def empty = [[null, null, null, null]]

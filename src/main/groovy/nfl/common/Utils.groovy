@@ -1,11 +1,11 @@
 package nfl.common
 
-import nfl.domain.Week
+
 import org.yaml.snakeyaml.Yaml
 
 import java.text.DecimalFormat
 
-import static Constants.*
+import static nfl.common.Constants.*
 
 /**
  * @author Ray Matthes
@@ -29,7 +29,7 @@ class Utils {
    }
 
    static int picksForWeek(int week) {
-      (week < Constants.DOUBLE_PICKS_START_WEEK) ? 1 : 2
+      (week < DOUBLE_PICKS_START_WEEK) ? 1 : 2
    }
 
 }
