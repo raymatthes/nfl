@@ -8,7 +8,7 @@ import nfl.common.WeekConfig
 import nfl.domain.Pick
 import nfl.domain.Week
 
-import static Constants.Name
+import static nfl.common.Constants.Name
 
 /**
  * a practical method not guaranteed to be optimal or perfect, but sufficient for the immediate goal
