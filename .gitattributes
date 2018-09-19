@@ -2,3 +2,5 @@ var/survivor.html linguist-vendored
 src/test/resources/2014/* linguist-vendored
 src/test/resources/2015/* linguist-vendored
 src/test/resources/2016/* linguist-vendored
+src/test/resources/2017/* linguist-vendored
+src/test/resources/2018/* linguist-vendored
