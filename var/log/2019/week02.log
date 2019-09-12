@@ -1,0 +1,76 @@
+7:04:00 PM: Executing task 'HeuristicMethod.main()'...
+
+:compileJava NO-SOURCE
+:compileGroovy UP-TO-DATE
+:processResources
+:classes
+:HeuristicMethod.main()
+Start: Wed Sep 11 19:04:00 MDT 2019
+This is 2019 week number 2
+Working with 31 remaining teams.  8,222,838,654,177,922,817,725,562,880,000,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[NE, DAL, MIN, LAR, PIT, NO, LAC, BAL, GB, BUF, KC, HOU, TEN, SEA, NYJ, IND, CHI, SF, OAK, CLE, ATL, CAR, JAX, TB, ARI, NYG, DET, DEN, WAS, CIN, MIA], total:-167.0)
+02 NE(-18.5) 
+03 DAL(-10.5) MIN(-7.5) 
+04 LAR(-10.5) PIT(-9.5) 
+05 NO(-10.5) LAC(-7.5) 
+06 BAL(-8.0) GB(-7.0) 
+07 BUF(-7.0) KC(-4.0) 
+08 HOU(-7.0) TEN(-5.0) 
+09 SEA(-7.0) NYJ(-3.5) 
+10 IND(-9.5) CHI(-7.5) 
+11 SF(-8.0) OAK(-4.0) 
+12 CLE(-10.5) ATL(-7.0) 
+13 CAR(-6.5) JAX(-4.0) 
+14 TB(1.5) ARI(5.0) 
+15 NYG(-5.0) DET(-3.0) 
+16 DEN(-3.5) WAS(-3.0) 
+17 CIN(6.0) MIA(15.0) 
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:1, teams:[MIA, TB, DET, WAS, ARI, CIN, OAK, BAL, DEN, NYG, JAX, HOU, TEN, BUF, PIT, IND, NYJ, SF, MIN, CHI, ATL, DAL, CAR, CLE, GB, KC, NO, SEA, LAC, NE, LAR], total:-141.5)
+02 MIA(18.5) 
+03 TB(-3.5) DET(9.5) 
+04 WAS(3.0) ARI(5.0) 
+05 CIN(-3.5) OAK(4.0) 
+06 BAL(-8.0) DEN(-1.0) 
+07 NYG(-3.5) JAX(-1.0) 
+08 HOU(-7.0) TEN(-5.0) 
+09 BUF(-5.0) PIT(-4.0) 
+10 IND(-9.5) NYJ(-4.0) 
+11 SF(-8.0) MIN(-7.0) 
+12 CHI(-9.5) ATL(-7.0) 
+13 DAL(-7.0) CAR(-6.5) 
+14 CLE(-9.5) GB(-9.5) 
+15 KC(-9.5) NO(-7.0) 
+16 SEA(-10.0) LAC(-8.0) 
+17 NE(-15.0) LAR(-13.0) 
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:23393, teams:[BAL, JAX, ARI, LAR, PIT, TEN, CIN, ATL, DEN, GB, BUF, NO, MIN, SEA, LAC, IND, TB, SF, OAK, CLE, CHI, KC, CAR, HOU, NYJ, NYG, DET, WAS, MIA, NE, DAL], total:-203.5)
+02 BAL(-13.0) 
+03 JAX(-2.0) ARI(3.5) 
+04 LAR(-10.5) PIT(-9.5) 
+05 TEN(-4.0) CIN(-3.5) 
+06 ATL(-4.0) DEN(-1.0) 
+07 GB(-8.0) BUF(-7.0) 
+08 NO(-13.5) MIN(-9.5) 
+09 SEA(-7.0) LAC(-3.5) 
+10 IND(-9.5) TB(-4.0) 
+11 SF(-8.0) OAK(-4.0) 
+12 CLE(-10.5) CHI(-9.5) 
+13 KC(-10.5) CAR(-6.5) 
+14 HOU(-6.5) NYJ(-6.5) 
+15 NYG(-5.0) DET(-3.0) 
+16 WAS(-3.0) MIA(1.0) 
+17 NE(-15.0) DAL(-10.5) 
+
+
+Elapsed: 40.918 seconds
+End: Wed Sep 11 19:04:41 MDT 2019
+
+BUILD SUCCESSFUL
+
+Total time: 41.493 secs
+7:04:41 PM: Task execution finished 'HeuristicMethod.main()'.
+
