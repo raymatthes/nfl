@@ -1,0 +1,56 @@
+8:42:08 AM: Executing task 'HeuristicMethod.main()'...
+
+Gradle Daemon started in 675 ms
+:compileJava NO-SOURCE
+:compileGroovy UP-TO-DATE
+:processResources
+:classes
+:HeuristicMethod.main()
+Start: Thu Oct 03 08:42:14 MDT 2019
+This is 2019 week number 5
+Working with 26 remaining teams.  403,291,461,126,605,635,584,000,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[KC, MIN, GB, WAS, BUF, SF, PIT, NO, SEA, CLE, IND, TB, OAK, CAR, CHI, DET, CIN, JAX, HOU, NYJ, NYG, TEN, ATL, DEN, ARI, MIA], total:-119.0)
+05 KC(-11.0) MIN(-5.5) 
+06 GB(-6.0) WAS(-5.5) 
+07 BUF(-13.5) SF(-7.0) 
+08 PIT(-13.0) NO(-9.5) 
+09 SEA(-6.0) CLE(-3.5) 
+10 IND(-13.5) TB(-6.5) 
+11 OAK(-4.0) CAR(-3.5) 
+12 CHI(-8.0) DET(-4.5) 
+13 CIN(-3.5) JAX(-2.0) 
+14 HOU(-7.5) NYJ(-6.5) 
+15 NYG(-9.5) TEN(-1.0) 
+16 ATL(-3.0) DEN(2.5) 
+17 ARI(13.5) MIA(18.5) 
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:0, teams:[], total:1000)
+Pick strategy failed.
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:23914, teams:[TEN, ARI, WAS, ATL, BUF, GB, MIN, PIT, DET, MIA, IND, NO, SF, OAK, CLE, CHI, CAR, JAX, HOU, NYJ, KC, NYG, SEA, CIN, TB, DEN], total:-178.5)
+05 TEN(-3.0) ARI(3.0) 
+06 WAS(-5.5) ATL(-3.0) 
+07 BUF(-13.5) GB(-9.5) 
+08 MIN(-13.0) PIT(-13.0) 
+09 DET(-1.0) MIA(3.0) 
+10 IND(-13.5) NO(-6.5) 
+11 SF(-9.5) OAK(-4.0) 
+12 CLE(-14.0) CHI(-8.0) 
+13 CAR(-9.5) JAX(-2.0) 
+14 HOU(-7.5) NYJ(-6.5) 
+15 KC(-13.5) NYG(-9.5) 
+16 SEA(-10.0) CIN(-4.5) 
+17 TB(-3.0) DEN(-1.5) 
+
+
+Elapsed: 34.373 seconds
+End: Thu Oct 03 08:42:48 MDT 2019
+
+BUILD SUCCESSFUL
+
+Total time: 38.667 secs
+8:42:48 AM: Task execution finished 'HeuristicMethod.main()'.
+
