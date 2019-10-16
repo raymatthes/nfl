@@ -1,0 +1,56 @@
+4:17:20 PM: Executing task 'HeuristicMethod.main()'...
+
+Gradle Daemon started in 640 ms
+:compileJava NO-SOURCE
+:compileGroovy
+Download https://repo1.maven.org/maven2/org/codehaus/groovy/groovy-all/2.3.7/groovy-all-2.3.7.jar
+Download https://repo1.maven.org/maven2/org/ccil/cowan/tagsoup/tagsoup/1.2/tagsoup-1.2.jar
+Download https://repo1.maven.org/maven2/org/yaml/snakeyaml/1.15/snakeyaml-1.15.jar
+:compileGroovy UP-TO-DATE
+:processResources
+:classes
+:HeuristicMethod.main()
+Start: Wed Oct 16 16:17:29 MDT 2019
+This is 2019 week number 7
+Working with 22 remaining teams.  1,124,000,727,777,607,680,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[BUF, SF, PIT, MIN, SEA, NYJ, IND, NO, OAK, CAR, CLE, CHI, KC, GB, HOU, JAX, NYG, DET, CIN, DEN, TB, MIA], total:-143.0)
+07 BUF(-16.5) SF(-10.0) 
+08 PIT(-16.5) MIN(-14.5) 
+09 SEA(-7.0) NYJ(-4.5) 
+10 IND(-14.0) NO(-6.0) 
+11 OAK(-4.5) CAR(-4.0) 
+12 CLE(-14.5) CHI(-8.0) 
+13 KC(-9.5) GB(-4.0) 
+14 HOU(-6.5) JAX(-1.0) 
+15 NYG(-9.5) DET(-4.0) 
+16 CIN(-4.0) DEN(-1.0) 
+17 TB(-2.0) MIA(18.5) 
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:0, teams:[], total:1000)
+Pick strategy failed.
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:3930, teams:[BUF, SF, PIT, NO, DEN, MIA, IND, TB, MIN, OAK, CLE, CHI, CAR, JAX, GB, NYJ, NYG, DET, SEA, CIN, KC, HOU], total:-170.5)
+07 BUF(-16.5) SF(-10.0) 
+08 PIT(-16.5) NO(-8.0) 
+09 DEN(-1.5) MIA(4.5) 
+10 IND(-14.0) TB(-3.5) 
+11 MIN(-6.5) OAK(-4.5) 
+12 CLE(-14.5) CHI(-8.0) 
+13 CAR(-9.5) JAX(-3.5) 
+14 GB(-10.5) NYJ(-9.5) 
+15 NYG(-9.5) DET(-4.0) 
+16 SEA(-9.5) CIN(-4.0) 
+17 KC(-6.5) HOU(-5.0) 
+
+
+Elapsed: 24.887 seconds
+End: Wed Oct 16 16:17:54 MDT 2019
+
+BUILD SUCCESSFUL
+
+Total time: 31.968 secs
+4:17:54 PM: Task execution finished 'HeuristicMethod.main()'.
+
