@@ -36,8 +36,21 @@ class WeekConfig {
    protected loadRemaining() {
       used = Utils.loadUsed()
       remaining = Name.values()
+      verifyUsedTeams()
       remaining.removeAll(used)
       printRemainingCount()
+   }
+
+   protected void verifyUsedTeams() {
+      // invoke after loading all teams into remaining, catch typos
+      if (!remaining) {
+         throw new IllegalStateException("Empty remaining teams")
+      }
+      used.each { Name usedTeamName ->
+         if (!(usedTeamName in remaining)) {
+            throw new IllegalStateException("Unrecognized used team: ${usedTeamName}")
+         }
+      }
    }
 
    protected loadWeeks(boolean download) {

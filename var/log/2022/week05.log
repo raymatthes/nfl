@@ -1,0 +1,62 @@
+/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/bin/java -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:57523,suspend=y,server=n -javaagent:/Users/rmatthes/Library/Caches/JetBrains/IntelliJIdea2022.2/groovyHotSwap/gragent.jar -javaagent:/Users/rmatthes/Library/Caches/JetBrains/IntelliJIdea2022.2/captureAgent/debugger-agent.jar -Dfile.encoding=UTF-8 -classpath /Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/charsets.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/cldrdata.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/dnsns.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/jaccess.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/localedata.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/nashorn.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/sunec.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/sunjce_provider.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/sunpkcs11.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/ext/zipfs.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/jce.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/jfr.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/jsse.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/management-agent.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/resources.jar:/Users/rmatthes/.sdkman/candidates/java/8.0.332-tem/jre/lib/rt.jar:/Users/rmatthes/src/nfl/build/classes/main:/Users/rmatthes/src/nfl/build/resources/main:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.3.7/feb6df9c6936c797159091a451ed8590d67101dc/groovy-all-2.3.7.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.ccil.cowan.tagsoup/tagsoup/1.2/639fd364750d7363c85797dc944b4a80f78fa684/tagsoup-1.2.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.15/3b132bea69e8ee099f416044970997bde80f4ea6/snakeyaml-1.15.jar:/Users/rmatthes/src/nfl/build/classes/test:/Users/rmatthes/src/nfl/build/resources/test:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.spockframework/spock-core/0.7-groovy-2.0/4de0b428de0c14b6eb6375d8174f71848cbfc1d7/spock-core-0.7-groovy-2.0.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/junit/junit-dep/4.10/64417b3bafdecd366afa514bd5beeae6c1f85ece/junit-dep-4.10.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/cglib/cglib-nodep/3.1/aa83efbd1aedc4f26bdf00e7ea78191483f2c9b3/cglib-nodep-3.1.jar:/Users/rmatthes/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/2.1/87c0ea803b69252868d09308b4618f766f135a96/objenesis-2.1.jar:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar nfl.method.HeuristicMethod
+Connected to the target VM, address: '127.0.0.1:57523', transport: 'socket'
+Start: Wed Oct 05 16:44:37 MDT 2022
+This is 2022 week number 5
+Working with 28 remaining teams.  304,888,344,611,713,860,501,504,000,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[BUF, TB, GB, LAR, CIN, LV, PHI, DAL, KC, ARI, NYG, MIA, BAL, NE, IND, MIN, CLE, ATL, TEN, SEA, DEN, CAR, JAX, DET, WAS, CHI, HOU, NYJ], total:-134.0)
+05 BUF(-14.5) TB(-8.0)
+06 GB(-9.5) LAR(-9.5)
+07 CIN(-9.5) LV(-9.5)
+08 PHI(-11.5) DAL(-8.0)
+09 KC(-8.0) ARI(-6.0)
+10 NYG(-7.5) MIA(-4.0)
+11 BAL(-10.5) NE(-6.5)
+12 IND(-6.5) MIN(-6.5)
+13 CLE(-6.5) ATL(-3.0)
+14 TEN(-3.5) SEA(-3.0)
+15 DEN(-3.5) CAR(-2.5)
+16 JAX(-3.0) DET(1.0)
+17 WAS(3.0) CHI(3.5)
+18 HOU(9.5) NYJ(9.5)
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:1, teams:[NYJ, HOU, WAS, SEA, CHI, DET, ATL, DEN, ARI, JAX, LV, CAR, NE, CIN, MIA, IND, CLE, NYG, DAL, LAR, PHI, MIN, KC, TEN, TB, BAL, BUF, GB], total:-124.0)
+05 NYJ(3.5) HOU(7.5)
+06 WAS(-1.0) SEA(2.5)
+07 CHI(4.5) DET(6.5)
+08 ATL(-3.0) DEN(-1.0)
+09 ARI(-6.0) JAX(-2.5)
+10 LV(-3.0) CAR(-2.5)
+11 NE(-6.5) CIN(-6.0)
+12 MIA(-11.5) IND(-6.5)
+13 CLE(-6.5) NYG(-3.5)
+14 DAL(-11.0) LAR(-4.0)
+15 PHI(-6.5) MIN(-4.0)
+16 KC(-13.5) TEN(-9.5)
+17 TB(-11.0) BAL(-9.5)
+18 BUF(-10.5) GB(-9.5)
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:75158, teams:[TB, JAX, GB, LAR, CIN, LV, ATL, HOU, ARI, CHI, PHI, NYG, BAL, NE, WAS, NYJ, MIN, CLE, BUF, DAL, DEN, CAR, KC, TEN, DET, SEA, IND, MIA], total:-190.0)
+05 TB(-8.0) JAX(-7.5)
+06 GB(-9.5) LAR(-9.5)
+07 CIN(-9.5) LV(-9.5)
+08 ATL(-3.0) HOU(6.0)
+09 ARI(-6.0) CHI(3.5)
+10 PHI(-10.5) NYG(-7.5)
+11 BAL(-10.5) NE(-6.5)
+12 WAS(-3.0) NYJ(-1.5)
+13 MIN(-10.0) CLE(-6.5)
+14 BUF(-15.0) DAL(-11.0)
+15 DEN(-3.5) CAR(-2.5)
+16 KC(-13.5) TEN(-9.5)
+17 DET(-3.5) SEA(-3.5)
+18 IND(-9.5) MIA(-9.5)
+
+
+Elapsed: 1 minutes, 16.110 seconds
+End: Wed Oct 05 16:45:53 MDT 2022
+Disconnected from the target VM, address: '127.0.0.1:57523', transport: 'socket'
+
+Process finished with exit code 0
