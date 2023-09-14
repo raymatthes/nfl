@@ -1,0 +1,78 @@
+21:41:06: Executing 'run'...
+
+:compileJava NO-SOURCE
+:compileGroovy UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:run
+Start: Wed Sep 13 21:41:08 MDT 2023
+This is 2023 week number 2
+Working with 31 remaining teams.  8,222,838,654,177,922,817,725,562,880,000,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[DAL, KC, SF, CIN, ATL, BUF, JAX, SEA, CLE, BAL, DET, NO, PIT, NE, CHI, MIA, HOU, MIN, LAR, DEN, NYJ, LAC, NYG, GB, TEN, PHI, CAR, LV, TB, IND, ARI], total:-149.5)
+02 DAL(-9.5)
+03 KC(-10.0)
+04 SF(-13.5)
+05 CIN(-9.0) ATL(-6.5)
+06 BUF(-8.0) JAX(-8.0)
+07 SEA(-9.5) CLE(-4.0)
+08 BAL(-7.5) DET(-6.5)
+09 NO(-4.0) PIT(-4.0)
+10 NE(-6.0) CHI(-3.0)
+11 MIA(-6.5) HOU(-3.0)
+12 MIN(-4.5) LAR(-3.5)
+13 DEN(-4.5) NYJ(-4.0)
+14 LAC(-4.0) NYG(-0.5)
+15 GB(-4.0) TEN(-4.0)
+16 PHI(-8.0) CAR(2.5)
+17 LV(-2.5) TB(2.5)
+18 IND(-3.0) ARI(6.5)
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:1, teams:[ARI, TB, IND, GB, TEN, LAR, LV, DEN, NYG, LAC, CAR, BAL, NO, NE, ATL, DET, HOU, JAX, MIN, PIT, DAL, NYJ, MIA, CLE, CIN, KC, CHI, PHI, BUF, SF, SEA], total:-143.5)
+02 ARI(5.5)
+03 TB(6.5)
+04 IND(1.5)
+05 GB(-0.5) TEN(-0.5)
+06 LAR(-6.5) LV(-1.5)
+07 DEN(-3.0) NYG(-2.5)
+08 LAC(-6.5) CAR(-4.0)
+09 BAL(-4.0) NO(-4.0)
+10 NE(-6.0) ATL(-4.0)
+11 DET(-6.5) HOU(-3.0)
+12 JAX(-6.5) MIN(-4.5)
+13 PIT(-8.0) DAL(-5.5)
+14 NYJ(-9.5) MIA(-8.0)
+15 CLE(-6.0) CIN(-5.5)
+16 KC(-9.5) CHI(-6.5)
+17 PHI(-13.5) BUF(-7.0)
+18 SF(-8.0) SEA(-6.5)
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:4841, teams:[TB, JAX, SF, CIN, ATL, LAR, NO, SEA, NYG, LAC, CAR, CLE, BAL, DAL, NE, DET, HOU, MIN, ARI, PIT, DEN, NYJ, MIA, GB, TEN, KC, CHI, PHI, BUF, IND, LV], total:-189.0)
+02 TB(-3.0)
+03 JAX(-9.5)
+04 SF(-13.5)
+05 CIN(-9.0) ATL(-6.5)
+06 LAR(-6.5) NO(-4.5)
+07 SEA(-9.5) NYG(-2.5)
+08 LAC(-6.5) CAR(-4.0)
+09 CLE(-9.5) BAL(-4.0)
+10 DAL(-7.0) NE(-6.0)
+11 DET(-6.5) HOU(-3.0)
+12 MIN(-4.5) ARI(3.5)
+13 PIT(-8.0) DEN(-4.5)
+14 NYJ(-9.5) MIA(-8.0)
+15 GB(-4.0) TEN(-4.0)
+16 KC(-9.5) CHI(-6.5)
+17 PHI(-13.5) BUF(-7.0)
+18 IND(-3.0) LV(0.5)
+
+
+Elapsed: 54.685 seconds
+End: Wed Sep 13 21:42:02 MDT 2023
+
+BUILD SUCCESSFUL
+
+Total time: 55.247 secs
+21:42:02: Execution finished 'run'.
