@@ -1,0 +1,74 @@
+12:45:15: Executing 'run'...
+
+Starting Gradle Daemon...
+Gradle Daemon started in 2 s 394 ms
+:compileJava NO-SOURCE
+:compileGroovy UP-TO-DATE
+:processResources
+:classes
+:run
+Start: Wed Sep 27 12:45:23 MDT 2023
+This is 2023 week number 4
+Working with 29 remaining teams.  8,841,761,993,739,701,954,543,616,000,000 permutations.
+Pick strategy: Forward
+nfl.domain.Pick(iteration:1, teams:[SF, CIN, DET, BUF, KC, SEA, CLE, LAC, BAL, NO, GB, ATL, NE, JAX, HOU, TEN, MIN, PIT, TB, NYJ, LV, PHI, LAR, CHI, DEN, IND, NYG, CAR, ARI], total:-148.0)
+04 SF(-14.0)
+05 CIN(-8.5) DET(-7.5)
+06 BUF(-11.0) KC(-10.0)
+07 SEA(-8.0) CLE(-4.0)
+08 LAC(-10.5) BAL(-7.0)
+09 NO(-9.5) GB(-4.0)
+10 ATL(-4.5) NE(-3.5)
+11 JAX(-4.5) HOU(-3.5)
+12 TEN(-7.5) MIN(-7.0)
+13 PIT(-8.0) TB(-6.5)
+14 NYJ(-3.5) LV(1.0)
+15 PHI(-3.5) LAR(-3.0)
+16 CHI(-3.0) DEN(-1.5)
+17 IND(-3.0) NYG(0.5)
+18 CAR(3.0) ARI(4.0)
+
+Pick strategy: Reverse
+nfl.domain.Pick(iteration:1, teams:[ARI, IND, NYJ, LAR, CHI, LV, DEN, NYG, CAR, LAC, NE, SEA, ATL, BUF, HOU, TEN, MIN, PIT, TB, CIN, BAL, NO, DET, KC, CLE, PHI, JAX, SF, GB], total:-135.5)
+04 ARI(14.0)
+05 IND(-1.0) NYJ(3.0)
+06 LAR(-6.5) CHI(3.5)
+07 LV(-1.5) DEN(1.5)
+08 NYG(-2.0) CAR(-0.5)
+09 LAC(-4.0) NE(-3.5)
+10 SEA(-5.0) ATL(-4.5)
+11 BUF(-10.0) HOU(-3.5)
+12 TEN(-7.5) MIN(-7.0)
+13 PIT(-8.0) TB(-6.5)
+14 CIN(-8.0) BAL(-7.5)
+15 NO(-7.5) DET(-7.0)
+16 KC(-10.5) CLE(-6.5)
+17 PHI(-12.0) JAX(-10.0)
+18 SF(-9.5) GB(-8.0)
+
+Pick strategy: Random
+nfl.domain.Pick(iteration:83248, teams:[SF, CIN, DET, BUF, LAR, SEA, KC, LAC, NYG, LV, CAR, NE, CHI, HOU, DEN, TEN, MIN, PIT, TB, NO, BAL, CLE, ATL, NYJ, ARI, PHI, JAX, GB, IND], total:-179.0)
+04 SF(-14.0)
+05 CIN(-8.5) DET(-7.5)
+06 BUF(-11.0) LAR(-6.5)
+07 SEA(-8.0) KC(-6.0)
+08 LAC(-10.5) NYG(-2.0)
+09 LV(-3.0) CAR(3.0)
+10 NE(-3.5) CHI(-3.0)
+11 HOU(-3.5) DEN(-0.5)
+12 TEN(-7.5) MIN(-7.0)
+13 PIT(-8.0) TB(-6.5)
+14 NO(-9.5) BAL(-7.5)
+15 CLE(-10.5) ATL(-5.0)
+16 NYJ(-2.0) ARI(3.0)
+17 PHI(-12.0) JAX(-10.0)
+18 GB(-8.0) IND(-4.0)
+
+
+Elapsed: 1 minutes, 2.118 seconds
+End: Wed Sep 27 12:46:25 MDT 2023
+
+BUILD SUCCESSFUL
+
+Total time: 1 mins 8.914 secs
+12:46:25: Execution finished 'run'.
