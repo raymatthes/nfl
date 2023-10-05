@@ -98,15 +98,18 @@ class HeuristicMethod {
             }
 
             int teamsIndex = computeTeamsIndex(weekNumber, pickIndex)
+
             Name name = spread.key
+            Name opponent = week.getOpponentFor(name)
+
+            BigDecimal adjustment = Utils.isSameDivision(name, opponent) ?
+                    new BigDecimal('3') : BigDecimal.ZERO
 
             pick.teams.set(teamsIndex, name)
-            pick.total += spread.value
+            pick.total += (spread.value + adjustment)
 
             available.remove(name)
             eliminatedThisWeek << name
-
-            Name opponent = week.getOpponentFor(name)
             eliminatedThisWeek << opponent
          }
       }

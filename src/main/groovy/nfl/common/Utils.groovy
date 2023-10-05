@@ -32,4 +32,8 @@ class Utils {
       (week < DOUBLE_PICKS_START_WEEK) ? 1 : 2
    }
 
+   static boolean isSameDivision(Name team1, Name team2) {
+      Divisions[team1] == Divisions[team2]
+   }
+
 }
